@@ -1,0 +1,8 @@
+# Direnv
+.direnv
+
+# Nix build results
+result
+
+# Pre-commit 
+.pre-commit-config.yaml
