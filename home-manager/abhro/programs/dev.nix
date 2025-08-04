@@ -2,7 +2,7 @@
 {
 
   home.packages = with pkgs; [
-    jetbrains.idea-community
+    unstable.jetbrains.idea-community
   ];
 
   programs = {
@@ -58,7 +58,7 @@
 
     vscode = {
       enable = true;
-      package = pkgs.vscodium;
+      package = pkgs.unstable.vscodium;
     };
   };
 
