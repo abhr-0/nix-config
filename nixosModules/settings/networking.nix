@@ -26,8 +26,18 @@
 
     # DNS Nameservers
     nameservers = [
-      "9.9.9.9"
-      "149.112.112.112"
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
     ];
+  };
+
+  # systemd-resolvd config
+  # Look: https://nixos.wiki/wiki/Encrypted_DNS#Setting_nameservers
+  services.resolved = {
+    enable = true;
+    domains = [ "~." ];
+    dnsovertls = "true";
+    dnssec = "true";
   };
 }

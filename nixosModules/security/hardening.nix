@@ -19,19 +19,6 @@
     apparmor.killUnconfinedConfinables = lib.mkDefault true;
   };
 
-  # systemd-resolvd config
-  # Look: https://nixos.wiki/wiki/Encrypted_DNS#Setting_nameservers
-  services.resolved = {
-    enable = true;
-    domains = [ "~." ];
-    dnsovertls = "true";
-    dnssec = "true";
-    fallbackDns = [
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
-  };
-
   # imports = [ "${modulesPath}/profiles/hardened.nix" ]; # Causes issues
   # boot.kernelPackages = pkgs.linuxPackages_hardened; # Causes issues
 
