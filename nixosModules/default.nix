@@ -8,7 +8,7 @@
     ./security/hardening.nix
     ./security/sops.nix
     ./services/openssh.nix
-    # ./services/setIcons.nix
+    ./services/setUserIcons.nix
     ./services/usbguard.nix
     ./settings/virtualization.nix
   ];
