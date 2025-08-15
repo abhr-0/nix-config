@@ -1,12 +1,5 @@
+{ config, pkgs, ... }:
 {
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
-{
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
-
   # Enable zsh as it is required by users.user.<user>.shell = zsh;
   programs.zsh.enable = true;
 
@@ -32,11 +25,5 @@
 
     # Disable root login
     root.hashedPassword = "!";
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.abhro = ../../home-manager/abhro/home.nix; # TODO
   };
 }
