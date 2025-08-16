@@ -52,15 +52,19 @@
   };
 
   # Set cursor to 'Bibata Modern Classic' in GDM
-  programs.dconf.profiles.gdm.databases = [
-    {
-      lockAll = true;
-      settings."org/gnome/desktop/interface" = {
-        cursor-theme = "Bibata-Modern-Classic"; # Needs bibata-cursors installed
-        cursor-size = lib.gvariant.mkInt32 32;
-      };
-    }
-  ];
+  programs.dconf = {
+    enable = true;
+
+    profiles.gdm.databases = [
+      {
+        lockAll = true;
+        settings."org/gnome/desktop/interface" = {
+          cursor-theme = "Bibata-Modern-Classic"; # Needs bibata-cursors installed
+          cursor-size = lib.gvariant.mkInt32 32;
+        };
+      }
+    ];
+  };
 
   # Enable ibus for multi-lingual input
   i18n.inputMethod = {

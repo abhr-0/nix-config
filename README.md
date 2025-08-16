@@ -6,7 +6,6 @@ This repo contains my NixOS (+ home-manager) configuration.
 
 # TODO
 
-- [ ] Check whether usbguard-notifier works
 - [ ] Understand the sops setup better and checckout `age.generateKey` option
 - [ ] Resolve other TODOs
 
