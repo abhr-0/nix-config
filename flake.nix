@@ -116,7 +116,7 @@
                 };
                 statix = {
                   enable = true;
-                  # inherit excludes; # TODO: Does't work: https://github.com/cachix/git-hooks.nix/issues/288
+                  # inherit excludes; # FIXME #1
                   settings.ignore = [ "hardware-configuration.nix" ];
                 };
                 nixfmt-rfc-style = {
