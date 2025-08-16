@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   # NixOS tooling
   imports = [ inputs.nix-index-database.homeModules.nix-index ];
@@ -12,7 +17,9 @@
     };
   };
 
-  # home.packages = with pkgs; [
-  #   vulnix
-  # ];
+  home.packages = with pkgs; [
+    nixd
+    nixfmt-rfc-style
+    # vulnix
+  ];
 }
