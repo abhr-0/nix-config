@@ -18,42 +18,11 @@
       userEmail = "121384410+abhr-0@users.noreply.github.com";
     };
 
-    helix = {
+    neovim = {
       enable = true;
+      # plugins = with pkgs.vimPlugins; [
 
-      # languages = {
-      #   nix = {
-      #     formatter.command = "nixfmt";
-      #     auto-format = true;
-      #   };
-      #   language-server.nixd = {
-      #     command = "nixd";
-      #     formatting = {
-      #       command = [
-      #         "nix"
-      #         "fmt"
-      #         "--"
-      #         "-"
-      #       ];
-      #     };
-      #     nixpkgs.expr = "import (builtins.getFlake (\"git+file://\" + toString ./.)).inputs.nixpkgs { }";
-      #     options = {
-      #       nixos.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.laptop.options";
-      #       home_manager.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).homeConfigurations.abhro@laptop.options";
-      #     };
-      #   };
-      #   language-server.nil = {
-      #     command = "nil";
-      #     formatting = {
-      #       command = [
-      #         "nix"
-      #         "fmt"
-      #         "--"
-      #         "-"
-      #       ];
-      #     };
-      #   };
-      # };
+      # ];
     };
 
     vscode = {
