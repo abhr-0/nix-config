@@ -18,27 +18,35 @@
       userEmail = "121384410+abhr-0@users.noreply.github.com";
     };
 
-    neovim = {
-      enable = true;
-      plugins =
-        let
-          vscode-multi-cursor = pkgs.vimUtils.buildVimPlugin {
-            name = "vscode-multi-cursor";
-            src = pkgs.fetchFromGitHub {
-              owner = "vscode-neovim";
-              repo = "vscode-multi-cursor.nvim";
-              rev = "210d64a6d190383a81b8dcdf8779d357006f3a69";
-              sha256 = "sha256-0o0aiWY7AdtSo4nCfq3fGj0PEfngLgOnK/Y6NTWPWzU=";
-            };
+    neovim =
+      let
+        vscode-multi-cursor = pkgs.vimUtils.buildVimPlugin {
+          name = "vscode-multi-cursor";
+          src = pkgs.fetchFromGitHub {
+            owner = "vscode-neovim";
+            repo = "vscode-multi-cursor.nvim";
+            rev = "210d64a6d190383a81b8dcdf8779d357006f3a69";
+            sha256 = "sha256-0o0aiWY7AdtSo4nCfq3fGj0PEfngLgOnK/Y6NTWPWzU=";
           };
-        in
-        [
+        };
+      in
+      {
+        enable = true;
+        plugins = with pkgs.vimPlugins; [
           {
             plugin = vscode-multi-cursor;
             config = "require('vscode-multi-cursor').setup()";
           }
+          {
+            plugin = hardtime-nvim;
+            config = "require('hardtime').setup()";
+          }
+          {
+            plugin = nvim-surround;
+            config = "require('nvim-surround').setup()";
+          }
         ];
-    };
+      };
 
     vscode = {
       enable = true;
