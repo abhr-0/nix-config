@@ -4,11 +4,6 @@ This repo contains my NixOS (+ home-manager) configuration.
 
 > Reminder to self: Make sure to read 'manual-setup.md' to setup the non-nixified things
 
-# TODO
-
-- [ ] Understand the sops setup better and checckout `age.generateKey` option
-- [ ] Resolve other TODOs
-
 # Directory structure
 
 | Directory/File Name | Use                                |
