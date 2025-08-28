@@ -6,6 +6,10 @@
     nerd-fonts.caskaydia-cove
     nerd-fonts.jetbrains-mono
     noto-fonts
+    roboto
+    source-sans
+    ibm-plex
+    inter
   ];
 
   # Load fonts
