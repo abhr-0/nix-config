@@ -35,15 +35,11 @@
         plugins = with pkgs.vimPlugins; [
           {
             plugin = vscode-multi-cursor;
-            config = "require('vscode-multi-cursor').setup()";
-          }
-          {
-            plugin = hardtime-nvim;
-            config = "require('hardtime').setup()";
+            config = "lua require('vscode-multi-cursor').setup()";
           }
           {
             plugin = nvim-surround;
-            config = "require('nvim-surround').setup()";
+            config = "lua require('nvim-surround').setup()";
           }
         ];
       };
