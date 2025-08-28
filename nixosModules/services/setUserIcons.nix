@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, ... }:
 let
   iconsForUsers = [ "abhro" ];
 in
@@ -28,7 +28,7 @@ in
             echo "/var/lib/AccountsService/icons/${username} exists."
           else
             echo "/var/lib/AccountsService/icons/${username}" does not exist. Copying.
-            cp ${inputs.nix-secrets}/secrets/abhro.png /var/lib/AccountsService/icons/${username}
+            cp ${config.sops.secrets."${username}Icon".path} /var/lib/AccountsService/icons/${username}
           fi
 
           # Check whether /var/lib/AccountsService/users/USERNAME exists, create the file if it doesn't
