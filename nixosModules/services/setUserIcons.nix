@@ -1,8 +1,20 @@
-{ config, ... }:
+{ inputs, ... }:
 let
   iconsForUsers = [ "abhro" ];
 in
 {
+  sops.secrets = builtins.listToAttrs (
+    map (username: {
+      name = "${username}Icon";
+      value = {
+        format = "binary";
+        sopsFile = "${inputs.nix-secrets}/secrets/${username}Icon.enc";
+        path = "/var/lib/AccountsService/icons/${username}";
+        mode = "0644";
+      };
+    }) iconsForUsers
+  );
+
   # See: https://github.com/NixOS/nixpkgs/issues/163080
   #      https://discourse.nixos.org/t/setting-the-user-profile-image-under-gnome/36233/3
   systemd.services = builtins.listToAttrs (
@@ -21,17 +33,7 @@ in
         };
 
         script = ''
-          mkdir -p /var/lib/AccountsService/{icons,users}
-
-          # Check whether /var/lib/AccountsService/icons/USERNAME exists, copy if not
-          if [ -f "/var/lib/AccountsService/icons/${username}" ]; then
-            echo "/var/lib/AccountsService/icons/${username} exists."
-          else
-            echo "/var/lib/AccountsService/icons/${username}" does not exist. Copying.
-            cp ${config.sops.secrets."${username}Icon".path} /var/lib/AccountsService/icons/${username}
-          fi
-
-          # Check whether /var/lib/AccountsService/users/USERNAME exists, create the file if it doesn't
+          # Check whether /var/lib/AccountsService/users/USERNAME exists
           if [ -f "/var/lib/AccountsService/users/${username}" ]; then
             echo "/var/lib/AccountsService/users/${username} exists."
             # Check whether /var/lib/AccountsService/users/USERNAME has User's Icon defined
@@ -50,9 +52,6 @@ in
 
           chown root:root /var/lib/AccountsService/users/${username}
           chmod 0600 /var/lib/AccountsService/users/${username}
-
-          chown root:root /var/lib/AccountsService/icons/${username}
-          chmod 0644 /var/lib/AccountsService/icons/${username}
         '';
       };
     }) iconsForUsers

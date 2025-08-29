@@ -9,11 +9,6 @@
     secrets = {
       abhro-password.neededForUsers = true;
       usbguard_rules_file = { };
-
-      abhroIcon = {
-        format = "binary";
-        sopsFile = "${inputs.nix-secrets}/secrets/abhroIcon.enc";
-      };
     };
   };
 }
