@@ -117,7 +117,7 @@
                 statix = {
                   enable = true;
                   # inherit excludes; # FIXME #1
-                  settings.ignore = [ "hardware-configuration.nix" ];
+                  settings.ignore = excludes;
                 };
                 nixfmt-rfc-style = {
                   enable = true;
