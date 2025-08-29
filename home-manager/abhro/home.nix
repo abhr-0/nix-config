@@ -2,12 +2,13 @@
   imports = [
     ./fonts.nix
     ./gnome.nix
+    ./sops.nix
     ./programs/apps.nix
     ./programs/cli.nix
     ./programs/dev.nix
-    ./services/flatpak.nix
     ./programs/nix.nix
     ./programs/zsh.nix
+    ./services/flatpak.nix
   ];
 
   # Set username
