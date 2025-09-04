@@ -80,7 +80,7 @@
               }:
               inputs.nixpkgs.lib.nixosSystem {
                 inherit system;
-                specialArgs = { inherit inputs hostName system; };
+                specialArgs = { inherit inputs hostName; };
                 # > Our main nixos configuration file <
                 modules = [ ./hosts/${hostName}/configuration.nix ];
               };
