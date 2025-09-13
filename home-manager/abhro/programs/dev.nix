@@ -41,7 +41,7 @@
             plugin = nvim-surround;
             config = "lua require('nvim-surround').setup()";
           }
-        ];
+        ]; # Note: relative line numbering not working with VSCode Neovim ext
         extraLuaConfig = ''
 
           -- Set relative line numbering
@@ -56,7 +56,7 @@
           vim.o.breakindent = true
 
           -- Minimal number of screen lines to keep above and below the cursor.
-          vim.o.scrolloff = 8
+          vim.o.scrolloff = 4
 
           -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
           vim.o.ignorecase = true
