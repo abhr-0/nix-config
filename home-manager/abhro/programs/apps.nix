@@ -18,7 +18,7 @@
     */
     # gimp
     # handbrake # For transcoding videos
-    libreoffice-fresh # Office Suite
+    # libreoffice-fresh # Office Suite
 
     /*
       Miscellaneous

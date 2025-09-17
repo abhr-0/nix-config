@@ -8,9 +8,10 @@
       "org.videolan.VLC" # Flatpak version works better
       "one.ablaze.floorp"
       "md.obsidian.Obsidian"
+      "org.libreoffice.LibreOffice"
     ];
 
-    uninstallUnmanaged = true;
+    # uninstallUnmanaged = true;
 
     update.auto = {
       enable = true;
