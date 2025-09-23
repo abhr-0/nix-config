@@ -10,6 +10,7 @@
     ./security/sops.nix
     ./services/openssh.nix
     ./services/setUserIcons.nix
+    ./services/tailscale.nix
     ./services/usbguard.nix
     ./settings/virtualization.nix
   ];
