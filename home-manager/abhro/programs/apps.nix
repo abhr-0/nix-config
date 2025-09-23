@@ -27,7 +27,7 @@
     # jabref # References Manager
     # zotero # References Manager
     pika-backup # Backup
-    vorta # Backup "GTK_THEME" = "Adwaita:dark"; # Force dark mode also icon problem: https://github.com/NixOS/nixpkgs/issues/353568
+    # vorta # Backup "GTK_THEME" = "Adwaita:dark"
 
     /*
       Utilities

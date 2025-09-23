@@ -6,15 +6,6 @@
 {
   # CLI programs
   programs = {
-    # bat = {
-    #   enable = true;
-    #   config = {
-    #     # Show line numbers, git modifications, file header and grid
-    #     style = "full";
-    #     theme = "base16";
-    #   };
-    # };
-
     # eza = {
     #   enable = true;
     #   icons = "always"; # Always show icons
