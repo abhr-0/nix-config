@@ -28,14 +28,14 @@
       settings = (lib.modules.importTOML ./starship.toml).config; # Import settings from starship.toml
     };
 
-    yazi = {
-      enable = true;
-      settings.manager.ratio = [
-        2
-        4
-        4
-      ];
-    };
+    # yazi = {
+    #   enable = true;
+    #   settings.manager.ratio = [
+    #     2
+    #     4
+    #     4
+    #   ];
+    # };
 
     zoxide.enable = true;
   };
