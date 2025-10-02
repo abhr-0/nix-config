@@ -5,6 +5,7 @@
   services.flatpak = {
     enable = true;
     packages = [
+      "io.github.kolunmi.Bazaar"
       "org.videolan.VLC" # Flatpak version works better
       "one.ablaze.floorp"
       "md.obsidian.Obsidian"
