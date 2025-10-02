@@ -46,13 +46,4 @@
     # textpieces
     # raider # File shredder
   ];
-
-  programs.ghostty = {
-    enable = true;
-    settings = {
-      theme = "Adwaita Dark";
-      font-family = "FiraCode Nerd Font";
-      font-size = 14;
-    };
-  };
 }

@@ -4,9 +4,7 @@
     ./gnome.nix
     ./sops.nix
     ./programs/apps.nix
-    ./programs/cli.nix
     ./programs/dev.nix
-    ./programs/nix.nix
     ./programs/zsh.nix
     ./services/flatpak.nix
   ];
