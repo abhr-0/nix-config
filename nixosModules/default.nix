@@ -1,7 +1,7 @@
 {
   imports = [
     ./desktop/gnome.nix
-    ./desktop/misc.nix
+    ./settings/misc.nix
     ./settings/home-manager.nix
     ./settings/networking.nix
     ./settings/nix.nix

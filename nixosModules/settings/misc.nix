@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   # Enable Flatpak Support
   services.flatpak.enable = true;
@@ -8,6 +7,4 @@
 
   # Enable zram
   zramSwap.enable = true;
-
-  environment.defaultPackages = [ pkgs.btrfs-progs ];
 }
