@@ -16,6 +16,7 @@
         "wheel"
         "scanner"
         "lp"
+        "libvirtd"
       ];
 
       shell = pkgs.zsh;
