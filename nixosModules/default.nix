@@ -12,7 +12,7 @@
     ./services/setUserIcons.nix
     ./services/tailscale.nix
     ./services/usbguard.nix
-    ./settings/virtualization.nix
+    ./settings/virtualisation.nix
   ];
 
   # Set your time zone.

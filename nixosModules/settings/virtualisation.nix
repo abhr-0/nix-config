@@ -23,7 +23,11 @@
     };
 
     # Enable libvirtd (Needed by virt-manager)
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.swtpm.enable = true; # Enable software TPM
+    };
+
     #spiceUSBRedirection.enable = true;
   };
 }
