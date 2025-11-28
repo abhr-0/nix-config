@@ -24,8 +24,10 @@
     # Enable libvirtd (Needed by virt-manager)
     libvirtd = {
       enable = true;
-      qemu.swtpm.enable = true; # Enable software TPM
-      qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+      qemu = {
+        swtpm.enable = true; # Enable software TPM
+        vhostUserPackages = [ pkgs.virtiofsd ];
+      };
     };
 
     #spiceUSBRedirection.enable = true;
