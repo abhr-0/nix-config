@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     podman-compose # KEEP: `podman compose` uses this
-    quickemu
   ];
 
   # Enable virt-manager for working with VMs
