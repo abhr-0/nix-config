@@ -30,6 +30,6 @@
       };
     };
 
-    #spiceUSBRedirection.enable = true;
+    spiceUSBRedirection.enable = true;
   };
 }
