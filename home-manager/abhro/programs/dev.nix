@@ -26,8 +26,10 @@
 
     git = {
       enable = true;
-      userName = "abhr-0";
-      userEmail = "121384410+abhr-0@users.noreply.github.com";
+      settings.user = {
+        name = "abhr-0";
+        email = "121384410+abhr-0@users.noreply.github.com";
+      };
     };
 
     neovim =

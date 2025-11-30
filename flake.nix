@@ -2,11 +2,11 @@
   description = "abhr-0's NixOS + home-manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -74,15 +74,14 @@
               configurationList:
               inputs.nixpkgs.lib.genAttrs configurationList (name: mkNixOS { hostName = name; });
             mkNixOS =
-              {
-                hostName,
-                system ? "x86_64-linux",
-              }:
+              { hostName }:
               inputs.nixpkgs.lib.nixosSystem {
-                inherit system;
                 specialArgs = { inherit inputs hostName; };
                 # > Our main nixos configuration file <
-                modules = [ ./hosts/${hostName}/configuration.nix ];
+                modules = [
+                  ./hosts/${hostName}/configuration.nix
+                  { nixpkgs.hostPlatform = "x86_64-linux"; }
+                ];
               };
           in
           {

@@ -2,25 +2,15 @@
 {
   # Enable the GNOME Desktop Environment.
   services = {
-    xserver = {
+    displayManager.gdm = {
       enable = true;
-
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-
-      desktopManager.gnome.enable = true;
-
-      # Prevent installation of XTerm
-      excludePackages = [ pkgs.xterm ];
+      wayland = true;
     };
+
+    desktopManager.gnome.enable = true;
 
     # Set GNOME as the default session
     displayManager.defaultSession = "gnome";
-
-    # Disable Pulseaudio explicitly (for GNOME)
-    pulseaudio.enable = false;
   };
 
   environment = {
