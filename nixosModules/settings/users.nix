@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   # Enable zsh as it is required by users.user.<user>.shell = zsh;
   programs.zsh.enable = true;
@@ -14,10 +19,10 @@
       extraGroups = [
         "networkmanager"
         "wheel"
-        "scanner"
-        "lp"
         "libvirtd"
-      ];
+      ]
+      ++ lib.optional config.services.printing.enable "lp"
+      ++ lib.optional config.hardware.sane.enable "scanner";
 
       shell = pkgs.zsh;
 
