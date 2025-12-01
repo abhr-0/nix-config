@@ -21,12 +21,7 @@
   ];
 
   nixpkgs.config.allowUnfreePredicate = lib.mkDefault (
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "libfprint-2-tod1-elan"
-      "steam"
-      "steam-unwrapped"
-    ]
+    pkg: builtins.elem (lib.getName pkg) [ "libfprint-2-tod1-elan" ]
   );
 
   # Enable fingerprint reader support
@@ -35,13 +30,6 @@
     package = pkgs.fprintd-tod;
     tod.enable = true;
     tod.driver = pkgs.libfprint-2-tod1-elan;
-  };
-
-  # config.myModule.enableHpPrinter = true; # Incase printer support is needed
-
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
