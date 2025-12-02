@@ -8,6 +8,7 @@
     ./settings/users.nix
     ./security/hardening.nix
     ./security/sops.nix
+    ./services/firewalld.nix
     ./services/openssh.nix
     ./services/setUserIcons.nix
     ./services/tailscale.nix

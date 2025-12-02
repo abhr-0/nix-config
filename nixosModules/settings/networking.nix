@@ -4,14 +4,6 @@
     # Sets the host name
     inherit hostName;
 
-    # Open ports in the firewall.
-    firewall = {
-      allowedTCPPorts = [
-        # 2283 # Immich API
-        53317 # LocalSend
-      ];
-    };
-
     # MAC Address randomisation
     networkmanager = {
       ethernet.macAddress = "stable"; # Also available: `random` and default is `preserve`
