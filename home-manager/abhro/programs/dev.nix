@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     unstable.jetbrains.idea-community
+    ollama
 
     nixd
     nixfmt-rfc-style
