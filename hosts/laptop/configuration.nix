@@ -20,9 +20,11 @@
     ../../nixosModules
   ];
 
-  nixpkgs.config.allowUnfreePredicate = lib.mkDefault (
-    pkg: builtins.elem (lib.getName pkg) [ "libfprint-2-tod1-elan" ]
-  );
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "libfprint-2-tod1-elan"
+    ];
 
   # Enable fingerprint reader support
   services.fprintd = {

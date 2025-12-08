@@ -63,7 +63,12 @@
 
     vscode = {
       enable = true;
-      package = pkgs.unstable.vscodium;
+      package = pkgs.unstable.vscode;
+    };
+
+    zed-editor = {
+      enable = true;
+      package = pkgs.unstable.zed-editor;
     };
   };
 
@@ -77,6 +82,6 @@
 
   home.sessionVariables = {
     DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
-    EDITOR = "codium --wait";
+    EDITOR = "code --wait";
   };
 }

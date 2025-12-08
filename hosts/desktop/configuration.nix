@@ -21,13 +21,12 @@
 
   # Enable printer support
   nixpkgs.config = {
-    allowUnfreePredicate = lib.mkDefault (
+    allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
         "hplip"
         "hplipWithPlugin"
-      ]
-    );
+      ];
   };
 
   # Enable CUPS to print documents.
