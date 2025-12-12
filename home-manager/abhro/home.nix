@@ -6,6 +6,7 @@
     ./programs/apps.nix
     ./programs/dev.nix
     ./programs/zsh.nix
+    ./scripts/default.nix
     ./services/flatpak.nix
   ];
 
