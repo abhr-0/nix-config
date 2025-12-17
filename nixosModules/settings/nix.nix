@@ -34,7 +34,7 @@
 
       # Enable automatic garbage collection of nix store
       gc = {
-        automatic = false;
+        automatic = true;
         dates = "weekly";
       };
     };
