@@ -8,7 +8,7 @@
   imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
   home.packages = with pkgs; [
-    unstable.jetbrains.idea-oss
+    # unstable.jetbrains.idea-oss
     ollama
 
     nixd
