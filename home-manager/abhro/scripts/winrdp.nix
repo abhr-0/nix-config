@@ -6,7 +6,7 @@ in
 pkgs.writeShellScriptBin "winrdp" ''
   if [[ "$(${pkgs.libvirt}/bin/virsh -c qemu:///system domstate ${vmname})" != "running" ]]; then
     ${pkgs.libvirt}/bin/virsh -c qemu:///system start ${vmname}
-    sleep 15
+    sleep 35 # Wait for the VM to boot up before trying to connect
   fi
 
   cmd="${pkgs.freerdp}/bin/xfreerdp \
