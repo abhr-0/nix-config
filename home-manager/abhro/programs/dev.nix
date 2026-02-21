@@ -65,11 +65,6 @@
       enable = true;
       package = pkgs.unstable.vscode;
     };
-
-    zed-editor = {
-      enable = true;
-      package = pkgs.unstable.zed-editor;
-    };
   };
 
   # Note: GNOME's seahorse replaces the functionality of ssh, ssh-agent, gpg and gpg-agent
