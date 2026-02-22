@@ -46,4 +46,14 @@
     # textpieces
     # raider # File shredder
   ];
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox.override {
+      nativeMessagingHosts = [
+        # Gnome shell native connector
+        pkgs.gnome-browser-connector
+      ];
+    };
+  };
 }
