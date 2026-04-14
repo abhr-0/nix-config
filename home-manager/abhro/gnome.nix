@@ -19,10 +19,6 @@
         package = clipboard-indicator;
       }
       {
-        id = "windowgestures@extension.amarullz.com";
-        package = window-gestures;
-      }
-      {
         id = "dash-to-dock@micxgx.gmail.com";
         package = dash-to-dock;
       }
