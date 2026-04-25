@@ -23,7 +23,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_hardened; # Causes issues
 
   # Disable coredumps
-  systemd.coredump.enable = false;
+  systemd.coredump.enable = true;
 
   # Enable OpenSnitch
   # services.opensnitch.enable = true;
