@@ -33,25 +33,15 @@ in
         };
 
         script = ''
-          # Check whether /var/lib/AccountsService/users/USERNAME exists
-          if [ -f "/var/lib/AccountsService/users/${username}" ]; then
-            echo "/var/lib/AccountsService/users/${username} exists."
-            # Check whether /var/lib/AccountsService/users/USERNAME has User's Icon defined
-            if grep -q '^Icon=' /var/lib/AccountsService/users/${username}; then
-              echo "User icon is defined. Exiting."
-              exit 0
-            else
-              echo "User icon not defined. Adding line and exiting."
-              echo -e "Icon=/var/lib/AccountsService/icons/${username}\n" >> /var/lib/AccountsService/users/${username}
-            fi
+          if grep -q '^Icon=/var/lib/AccountsService/icons/${username}' /var/lib/AccountsService/users/${username}; then
+            echo "User icon is defined correctly. Exiting."
+            exit 0
           else
-            echo "/var/lib/AccountsService/users/${username} DOES NOT exist. Skipping."
-            exit 1
-            # echo -e "[User]\nSession=gnome\nSessionType=wayland\nIcon=/var/lib/AccountsService/icons/${username}\nSystemAccount=false\n" > /var/lib/AccountsService/users/${username}
+            echo "User icon is defined INCORRECTLY. Changing line and exiting."
+            sed -i "s|^Icon=.*|Icon=/var/lib/AccountsService/icons/${username}|" /var/lib/AccountsService/users/${username}
           fi
 
-          chown root:root /var/lib/AccountsService/users/${username}
-          chmod 0600 /var/lib/AccountsService/users/${username}
+          exit 0
         '';
       };
     }) iconsForUsers
