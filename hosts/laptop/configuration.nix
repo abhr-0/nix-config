@@ -39,6 +39,12 @@
     sbctl # For secureboot
   ];
 
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    fileSystems = [ "/" ];
+  };
+
   boot = {
     # Enable TPM support
     initrd = {
@@ -55,17 +61,17 @@
         # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
         efiSysMountPoint = "/boot";
       };
-      systemd-boot.enable = lib.mkForce false;
+      systemd-boot.enable = lib.mkForce true;
 
       # Hide the OS choice for bootloaders.
       # It's still possible to open the bootloader list by pressing any key
       # It will just not appear on screen unless a key is pressed
       timeout = 2;
     };
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-    };
+    # lanzaboote = {
+    #   enable = true;
+    #   pkiBundle = "/var/lib/sbctl";
+    # };
 
     # Enable plymouth
     plymouth.enable = true;
