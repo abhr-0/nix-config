@@ -35,9 +35,16 @@
       # Display all folders at the end of the app grid
       "org/gnome/shell/extensions/alphabetical-app-grid".folder-order-position = "end";
 
+      # USB protection settings
       "org/gnome/desktop/privacy" = {
         usb-protection = "true";
         usb-protection-level = "lockscreen";
+      };
+
+      # Wallpaper
+      "org/gnome/desktop/background" = {
+        picture-uri = "file://${./wallpaper.png}";
+        picture-uri-dark = "file://${./wallpaper.png}";
       };
     };
   };
