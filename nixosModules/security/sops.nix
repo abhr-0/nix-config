@@ -11,6 +11,8 @@
       # generateKey = true;
     };
 
+    gnupg.sshKeyPaths = [ ];
+
     secrets = {
       abhro-password.neededForUsers = true;
       usbguard_rules_file = { };
