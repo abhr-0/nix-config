@@ -38,6 +38,9 @@
       # USB protection settings
       "org/gnome/desktop/privacy" = {
         usb-protection = "true";
+        # - 'lockscreen' rejects all new USB only when the lock screen is present
+        # - 'always' rejects all new USB devices, when using this, to temporarily
+        # allow USB devices use: `sudo usbguard set-parameter ImplicitPolicyTarget allow`
         usb-protection-level = "lockscreen";
       };
 
