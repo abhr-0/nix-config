@@ -35,11 +35,20 @@
       # Display all folders at the end of the app grid
       "org/gnome/shell/extensions/alphabetical-app-grid".folder-order-position = "end";
 
+      # Pin apps to Dash/Dock
+      "org/gnome/shell".favorite-apps = [
+        "firefox.desktop"
+        "org.gnome.Console.desktop"
+        "code.desktop"
+        "md.obsidian.Obsidian.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+
       # USB protection settings
       "org/gnome/desktop/privacy" = {
         usb-protection = "true";
-        # - 'lockscreen' rejects all new USB only when the lock screen is present
-        # - 'always' rejects all new USB devices, when using this, to temporarily
+        # - "lockscreen" rejects all new USB only when the lock screen is present
+        # - "always" rejects all new USB devices, when using this, to temporarily
         # allow USB devices use: `sudo usbguard set-parameter ImplicitPolicyTarget allow`
         usb-protection-level = "lockscreen";
       };
