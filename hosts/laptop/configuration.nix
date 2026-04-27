@@ -92,17 +92,35 @@
         # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
         efiSysMountPoint = "/boot";
       };
-      systemd-boot.enable = lib.mkForce true;
+      systemd-boot.enable = lib.mkForce false;
 
       # Hide the OS choice for bootloaders.
       # It's still possible to open the bootloader list by pressing any key
       # It will just not appear on screen unless a key is pressed
       timeout = 2;
     };
-    # lanzaboote = {
-    #   enable = true;
-    #   pkiBundle = "/var/lib/sbctl";
-    # };
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+
+      autoGenerateKeys.enable = true;
+      autoEnrollKeys = {
+        enable = true;
+        # Automatically reboot to enroll the keys in the firmware
+        autoReboot = true;
+      };
+
+      # TODO: Enable later as lanzaboote v1.0.0 doesn't support measured boot, next release should have it
+      # measuredBoot = {
+      #   enable = true;
+      #   pcrs = [
+      #     0
+      #     4
+      #     7
+      #   ];
+      # };
+    };
 
     # Enable plymouth
     plymouth.enable = true;
