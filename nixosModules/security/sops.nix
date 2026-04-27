@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
@@ -16,6 +16,11 @@
     secrets = {
       abhro-password.neededForUsers = true;
       usbguard_rules_file = { };
+      home_wifi_password = { };
     };
+
+    templates."network_manager.env".content = ''
+      HOME_WIFI_PASSWORD=${config.sops.placeholder.home_wifi_password}
+    '';
   };
 }

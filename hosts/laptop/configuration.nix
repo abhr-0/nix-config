@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -38,6 +39,36 @@
     tpm-tools # Enable TPM support
     sbctl # For secureboot
   ];
+
+  networking.networkmanager.ensureProfiles = {
+    environmentFiles = [ "${config.sops.templates."network_manager.env".path}" ];
+    profiles = {
+      JioFiber-5G = {
+        connection = {
+          id = "JioFiber-5G";
+          interface-name = "wlp3s0";
+          type = "wifi";
+        };
+        ipv4 = {
+          method = "auto";
+        };
+        ipv6 = {
+          addr-gen-mode = "default";
+          method = "auto";
+        };
+        proxy = { };
+        wifi = {
+          mode = "infrastructure";
+          ssid = "JioFiber-5G";
+        };
+        wifi-security = {
+          auth-alg = "open";
+          key-mgmt = "wpa-psk";
+          psk = "$HOME_WIFI_PASSWORD";
+        };
+      };
+    };
+  };
 
   services.btrfs.autoScrub = {
     enable = true;
