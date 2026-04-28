@@ -20,7 +20,9 @@
 
     secrets = {
       abhro-password.neededForUsers = true;
-      usbguard_rules_file = { };
+      usbguard_rules_file = {
+        sopsFile = "${inputs.nix-secrets}/secrets/${config.networking.hostName}.yaml";
+      };
 
       # TODO: Shift this to a separate module
       home_wifi_password = lib.mkIf (config.networking.hostName == "laptop") {
