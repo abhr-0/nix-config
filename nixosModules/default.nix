@@ -1,11 +1,6 @@
 {
   imports = [
     ./desktop/gnome.nix
-    ./settings/misc.nix
-    ./settings/home-manager.nix
-    ./settings/networking.nix
-    ./settings/nix.nix
-    ./settings/users.nix
     ./security/hardening.nix
     ./security/sops.nix
     ./services/firewalld.nix
@@ -13,6 +8,12 @@
     ./services/setUserIcons.nix
     ./services/tailscale.nix
     ./services/usbguard.nix
+    ./settings/home-manager.nix
+    ./settings/misc.nix
+    ./settings/networking.nix
+    ./settings/nh.nix
+    ./settings/nix.nix
+    ./settings/users.nix
     ./settings/virtualisation.nix
   ];
 
