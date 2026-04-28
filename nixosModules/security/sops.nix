@@ -12,7 +12,7 @@
     defaultSopsFormat = "yaml";
 
     age = {
-      keyFile = "/var/lib/sops-nix/age/keys.txt";
+      keyFile = "/var/lib/sops-nix/keys.txt";
       # generateKey = true;
     };
 
