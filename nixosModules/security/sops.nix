@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
@@ -16,10 +21,15 @@
     secrets = {
       abhro-password.neededForUsers = true;
       usbguard_rules_file = { };
-      home_wifi_password = { };
+
+      # TODO: Shift this to a separate module
+      home_wifi_password = lib.mkIf (config.networking.hostName == "laptop") {
+        sopsFile = "${inputs.nix-secrets}/secrets/laptop.yaml";
+      };
     };
 
-    templates."network_manager.env".content = ''
+    # TODO: Same as above
+    templates."network_manager.env".content = lib.mkIf (config.networking.hostName == "laptop") ''
       HOME_WIFI_PASSWORD=${config.sops.placeholder.home_wifi_password}
     '';
   };
