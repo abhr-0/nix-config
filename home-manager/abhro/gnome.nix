@@ -44,6 +44,26 @@
         "org.gnome.Nautilus.desktop"
       ];
 
+      # Custom keyboard shortcut
+      "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" # / is critical?
+      ];
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        name = "Launch Console";
+        command = "kgx";
+        binding = "<Super>t";
+      };
+
+      # Configure Dash-to-Dock
+      "org/gnome/shell/extensions/dash-to-dock" = {
+        # Disable trash in dock
+        # show-trash = false;
+
+        # Set Dash/Dock icon size
+        # dash-max-icon-size = 56; # or try, 64
+      };
+
       # USB protection settings
       "org/gnome/desktop/privacy" = {
         usb-protection = "true";
