@@ -19,6 +19,10 @@
 
     # Custom local modules
     ../../nixosModules
+
+    # Disko
+    inputs.disko.nixosModules.disko
+    ./disko-config.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =

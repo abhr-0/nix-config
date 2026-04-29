@@ -8,38 +8,10 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-
-  fileSystems."/" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd:1" "noatime"];
-    };
-
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/4eb5aa96-a374-4a93-820b-6c9d48e5b64b";
-
-  fileSystems."/home" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd:1" "noatime"];
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd:1" "noatime"];
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9F4E-1E40";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
