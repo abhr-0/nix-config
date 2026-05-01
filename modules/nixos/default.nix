@@ -11,6 +11,7 @@
     ./common/openssh.nix
     ./common/setUserIcons.nix
     ./common/sops.nix
+    ./common/sound.nix
     ./common/tailscale.nix
     ./common/time.nix
     ./common/usbguard.nix

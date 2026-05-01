@@ -55,14 +55,4 @@
       }
     ];
   };
-
-  # Enable sound
-  # WARNING: DO NOT USE `sound.enable = true` as it will setup ALSA;
-  security.rtkit.enable = true; # Recommended
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 }
