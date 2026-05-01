@@ -7,6 +7,7 @@
 {
   flake =
     let
+      hosts = builtins.attrNames (builtins.readDir ../../hosts);
       genNixosConfigurations =
         configurationList: lib.genAttrs configurationList (name: mkNixOS { hostName = name; });
       mkNixOS =
@@ -22,10 +23,7 @@
     in
     {
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = genNixosConfigurations [
-        "desktop"
-        "laptop"
-      ];
+      nixosConfigurations = genNixosConfigurations hosts;
 
       nixosModules.default = ../../modules/nixos/default.nix;
     };
