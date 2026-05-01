@@ -12,6 +12,7 @@ This repo contains my NixOS (+ home-manager) configuration.
 | `./flake.lock`      | Locks the version                  |
 | `./home-manager/*`  | Home manager config                |
 | `./hosts/*`         | NixOS config specific to each host |
-| `./nixosModules/*`  | Contains common NixOS modules      |
+| `./modules/flake/*` | Contains flake-parts modules       |
+| `./modules/nixos/*` | NixOS modules                      |
 
 > This config was initialised using [Mysterio77/nix-starter-configs](https://github.com/Misterio77/nix-starter-configs)
