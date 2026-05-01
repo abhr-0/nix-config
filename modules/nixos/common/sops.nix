@@ -6,11 +6,7 @@
     defaultSopsFile = "${inputs.nix-secrets}/secrets/host.yaml";
     defaultSopsFormat = "yaml";
 
-    age = {
-      keyFile = "/var/lib/sops-nix/keys.txt";
-      # generateKey = true;
-    };
-
+    # Disable automatic importing of SSH host RSA keys as GPG keys for sops
     gnupg.sshKeyPaths = [ ];
   };
 }
