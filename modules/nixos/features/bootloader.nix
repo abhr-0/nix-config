@@ -35,6 +35,11 @@
           efiSupport = true;
           useOSProber = true; # To detect Windows installation
           default = 2; # To select Windows to be the default option
+
+          # Hide the OS choice for bootloaders.
+          # It's still possible to open the bootloader list by holding the
+          # "Shift" key during boot
+          timeoutStyle = "hidden";
         };
       };
     })
@@ -58,6 +63,11 @@
           efi.efiSysMountPoint = "/boot"; # Default
 
           systemd-boot.enable = lib.mkForce false;
+
+          # Hide the OS choice for bootloaders.
+          # It's still possible to open the bootloader list by holding "Esc"
+          # or "Space" key
+          timeout = 0;
         };
 
         lanzaboote = {
@@ -86,7 +96,6 @@
     })
     (lib.mkIf (config.systemSettings.bootloader != "none") {
       boot.loader = {
-        timeout = 2; # To quickly boot
         efi.canTouchEfiVariables = true;
       };
     })
