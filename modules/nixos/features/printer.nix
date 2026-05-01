@@ -8,7 +8,6 @@
   options.systemSettings.printer.enable = lib.mkEnableOption "Enable printer and scanner support";
 
   config = lib.mkIf config.systemSettings.printer.enable {
-    # Enable printer support
     nixpkgs.config = {
       allowUnfreePredicate =
         pkg:
@@ -18,7 +17,6 @@
         ];
     };
 
-    # Enable CUPS to print documents.
     services.printing = {
       enable = true;
       drivers = [ pkgs.hplipWithPlugin ];

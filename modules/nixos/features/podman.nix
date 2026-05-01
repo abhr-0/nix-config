@@ -15,7 +15,6 @@
       # Enable common container config files in /etc/containers
       containers.enable = true;
 
-      # Enable Podman
       podman = {
         enable = true;
         dockerCompat = true; # Create `docker` alias for podman
