@@ -33,33 +33,17 @@
       };
     };
 
-    neovim =
-      let
-        vscode-multi-cursor = pkgs.vimUtils.buildVimPlugin {
-          name = "vscode-multi-cursor";
-          src = pkgs.fetchFromGitHub {
-            owner = "vscode-neovim";
-            repo = "vscode-multi-cursor.nvim";
-            rev = "210d64a6d190383a81b8dcdf8779d357006f3a69";
-            sha256 = "sha256-0o0aiWY7AdtSo4nCfq3fGj0PEfngLgOnK/Y6NTWPWzU=";
-          };
-        };
-      in
-      {
-        enable = true;
-        plugins = with pkgs.vimPlugins; [
-          {
-            plugin = vscode-multi-cursor;
-            config = "lua require('vscode-multi-cursor').setup()";
-          }
-          {
-            plugin = nvim-surround;
-            config = "lua require('nvim-surround').setup()";
-          }
-        ]; # Note: relative line numbering not working with VSCode Neovim ext
-        extraLuaConfig = lib.readFile ./neovimCfg.lua;
-        extraPackages = [ pkgs.wl-clipboard ]; # For clipboard syncing with OS
-      };
+    neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
+        {
+          plugin = nvim-surround;
+          config = "lua require('nvim-surround').setup()";
+        }
+      ]; # Note: relative line numbering not working with VSCode Neovim ext
+      extraLuaConfig = lib.readFile ./neovimCfg.lua;
+      extraPackages = [ pkgs.wl-clipboard ]; # For clipboard syncing with OS
+    };
 
     vscode = {
       enable = true;
