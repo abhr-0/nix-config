@@ -62,6 +62,8 @@
 
         # Set Dash/Dock icon size
         # dash-max-icon-size = 56; # or try, 64
+
+        disable-overview-on-startup = true;
       };
 
       # USB protection settings
