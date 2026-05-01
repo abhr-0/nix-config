@@ -1,6 +1,17 @@
-{ inputs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 let
-  iconsForUsers = [ "abhro" ];
+  normalUsers = builtins.attrNames (
+    lib.filterAttrs (_name: user: user.isNormalUser) config.users.users
+  );
+
+  usersWithIcon = builtins.filter (
+    username: builtins.pathExists "${inputs.nix-secrets}/secrets/${username}Icon.enc"
+  ) normalUsers;
 in
 {
   sops.secrets = builtins.listToAttrs (
@@ -12,7 +23,7 @@ in
         path = "/var/lib/AccountsService/icons/${username}";
         mode = "0644";
       };
-    }) iconsForUsers
+    }) usersWithIcon
   );
 
   # See: https://github.com/NixOS/nixpkgs/issues/163080
@@ -44,6 +55,6 @@ in
           exit 0
         '';
       };
-    }) iconsForUsers
+    }) usersWithIcon
   );
 }
