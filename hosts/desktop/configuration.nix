@@ -13,6 +13,7 @@
   systemSettings = {
     printer.enable = true;
     bootloader = "grub";
+    plymouth.enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
