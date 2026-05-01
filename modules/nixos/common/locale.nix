@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   i18n = {
-    defaultLocale = "en_US.UTF-8"; # en_IN
-    # extraLocales = [ ];
+    defaultLocale = "en_US.UTF-8";
+    extraLocales = [ "en_IN/UTF-8" ];
 
     # Enable ibus for multi-lingual input
     inputMethod = {
