@@ -56,13 +56,6 @@
     ];
   };
 
-  # Enable ibus for multi-lingual input
-  i18n.inputMethod = {
-    enable = true;
-    type = "ibus";
-    ibus.engines = [ pkgs.ibus-engines.m17n ];
-  };
-
   # Enable sound
   # WARNING: DO NOT USE `sound.enable = true` as it will setup ALSA;
   security.rtkit.enable = true; # Recommended
@@ -72,7 +65,4 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Enable fwupd (Needed by gnome-firmware)
-  # services.fwupd.enable = true;
 }

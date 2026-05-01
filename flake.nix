@@ -50,89 +50,12 @@
   };
 
   outputs =
-    {
-      # self,
-      flake-parts,
-      ...
-    }@inputs:
+    { flake-parts, ... }@inputs: # self,
+
     flake-parts.lib.mkFlake { inherit inputs; }
       # top@{ config, withSystem, moduleWithSystem, ... }:
       {
-        imports = [ inputs.git-hooks-nix.flakeModule ];
-
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ];
-
-        flake =
-          let
-            genNixosConfigurations =
-              configurationList:
-              inputs.nixpkgs.lib.genAttrs configurationList (name: mkNixOS { hostName = name; });
-            mkNixOS =
-              { hostName }:
-              inputs.nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit inputs hostName; };
-                # > Our main nixos configuration file <
-                modules = [
-                  ./hosts/${hostName}/configuration.nix
-                  { nixpkgs.hostPlatform = "x86_64-linux"; }
-                ];
-              };
-          in
-          {
-            # Available through 'nixos-rebuild --flake .#your-hostname'
-            nixosConfigurations = genNixosConfigurations [
-              "desktop"
-              "laptop"
-            ];
-
-            # Standalone home-manager configuration entrypoint
-            # Available through 'home-manager --flake .#your-username@your-hostname'
-            homeConfigurations."abhro" = inputs.home-manager.lib.homeManagerConfiguration {
-              pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux"; # Home-manager requires 'pkgs' instance
-              extraSpecialArgs = { inherit inputs; };
-              # > Our main home-manager configuration file <
-              modules = [ ./home-manager/abhro/home.nix ];
-            };
-          };
-
-        perSystem =
-          { config, pkgs, ... }: # { system, ...}
-          {
-            pre-commit.settings.hooks =
-              let
-                excludes = [ "hardware-configuration\\.nix" ];
-              in
-              {
-                deadnix = {
-                  enable = true;
-                  inherit excludes;
-                };
-                statix = {
-                  enable = true;
-                  # inherit excludes; # FIXME #1
-                  settings.ignore = excludes;
-                };
-                nixfmt-rfc-style = {
-                  enable = true;
-                  inherit excludes;
-                };
-              };
-
-            devShells.default = pkgs.mkShell {
-              packages = with pkgs; [
-                nixd
-                nixfmt-rfc-style
-              ];
-
-              shellHook = ''
-                ${config.pre-commit.installationScript}
-              '';
-            };
-          };
+        imports = [ ./modules/flake/default.nix ];
+        systems = [ "x86_64-linux" ];
       };
 }

@@ -5,6 +5,9 @@
   ...
 }:
 {
+  # This is required to be able to use the `path` attribute of secrets in users.user.<user>.hashedPasswordFile
+  sops.secrets.abhro-password.neededForUsers = true;
+
   # Enable zsh as it is required by users.user.<user>.shell = zsh;
   programs.zsh.enable = true;
 

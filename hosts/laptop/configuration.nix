@@ -1,74 +1,13 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = [
     # Import common hardware configs from nixos-hardware
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-amd
 
-    # Import Lanzaboote module
-    inputs.lanzaboote.nixosModules.lanzaboote
-
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-
-    # Custom local modules
-    ../../nixosModules
   ];
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "libfprint-2-tod1-elan"
-    ];
-
-  # Enable fingerprint reader support
-  services.fprintd = {
-    enable = true;
-    package = pkgs.fprintd-tod;
-    tod.enable = true;
-    tod.driver = pkgs.libfprint-2-tod1-elan;
-  };
-
-  environment.systemPackages = with pkgs; [
-    tpm-tools # Enable TPM support
-    sbctl # For secureboot
-  ];
-
-  networking.networkmanager.ensureProfiles = {
-    environmentFiles = [ "${config.sops.templates."network_manager.env".path}" ];
-    profiles = {
-      JioFiber-5G = {
-        connection = {
-          id = "JioFiber-5G";
-          interface-name = "wlp3s0";
-          type = "wifi";
-        };
-        ipv4 = {
-          method = "auto";
-        };
-        ipv6 = {
-          addr-gen-mode = "default";
-          method = "auto";
-        };
-        proxy = { };
-        wifi = {
-          mode = "infrastructure";
-          ssid = "JioFiber-5G";
-        };
-        wifi-security = {
-          auth-alg = "open";
-          key-mgmt = "wpa-psk";
-          psk = "$HOME_WIFI_PASSWORD";
-        };
-      };
-    };
-  };
 
   services.btrfs.autoScrub = {
     enable = true;
@@ -76,66 +15,14 @@
     fileSystems = [ "/" ];
   };
 
-  boot = {
-    # Enable TPM support
-    initrd = {
-      systemd.enable = true;
-      systemd.tpm2.enable = true;
-
-      verbose = false; # For silent boot
-    };
-
-    # Bootloader configuration
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
-        efiSysMountPoint = "/boot";
-      };
-      systemd-boot.enable = lib.mkForce false;
-
-      # Hide the OS choice for bootloaders.
-      # It's still possible to open the bootloader list by pressing any key
-      # It will just not appear on screen unless a key is pressed
-      timeout = 2;
-    };
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-
-      autoGenerateKeys.enable = true;
-      autoEnrollKeys = {
-        enable = true;
-        # Automatically reboot to enroll the keys in the firmware
-        autoReboot = true;
-      };
-
-      # TODO: Enable later as lanzaboote v1.0.0 doesn't support measured boot, next release should have it
-      # measuredBoot = {
-      #   enable = true;
-      #   pcrs = [
-      #     0
-      #     4
-      #     7
-      #   ];
-      # };
-    };
-
-    # Enable plymouth
+  systemSettings = {
+    podman.enable = true;
+    virt-manager.enable = true;
+    firewalld.enable = true;
+    homeWifi.enable = true;
+    fprint.enable = true;
     plymouth.enable = true;
-
-    # Enable "Silent Boot"
-    consoleLogLevel = 0;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "loglevel=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-    ];
+    bootloader = "lanzaboote";
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
