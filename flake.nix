@@ -47,15 +47,14 @@
       url = "github:the-nix-way/dev-templates";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs =
-    { flake-parts, ... }@inputs: # self,
-
-    flake-parts.lib.mkFlake { inherit inputs; }
-      # top@{ config, withSystem, moduleWithSystem, ... }:
-      {
-        imports = [ ./modules/flake/default.nix ];
-        systems = [ "x86_64-linux" ];
-      };
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree ./modules/flake) ];
+      systems = [ "x86_64-linux" ];
+    };
 }

@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   lib,
   ...
@@ -17,14 +16,12 @@
           # > Our main nixos configuration file <
           modules = [
             ../../hosts/${hostName}/configuration.nix
-            self.nixosModules.default
+            (inputs.import-tree ../nixos)
           ];
         };
     in
     {
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = genNixosConfigurations hosts;
-
-      nixosModules.default = ../../modules/nixos/default.nix;
     };
 }
