@@ -21,9 +21,13 @@
   config = lib.mkMerge [
     (lib.mkIf (config.systemSettings.bootloader == "grub") {
       boot.loader = {
-        # Using /boot/efi is the mount point as this is a dual-boot system and
-        # the EFI partition is shared between Windows and NixOS
-        efi.efiSysMountPoint = "/boot/efi";
+        efi = {
+          # Using /boot/efi is the mount point as this is a dual-boot system and
+          # the EFI partition is shared between Windows and NixOS
+          efiSysMountPoint = "/boot/efi";
+
+          canTouchEfiVariables = true;
+        };
 
         grub = {
           enable = true;
@@ -58,9 +62,13 @@
 
         # Bootloader configuration
         loader = {
-          # assuming /boot is the mount point of the  EFI partition in NixOS
-          # (as the installation section recommends).
-          efi.efiSysMountPoint = "/boot"; # Default
+          efi = {
+            # assuming /boot is the mount point of the  EFI partition in NixOS
+            # (as the installation section recommends).
+            efiSysMountPoint = "/boot"; # Default
+
+            canTouchEfiVariables = true;
+          };
 
           systemd-boot.enable = lib.mkForce false;
 
@@ -92,11 +100,6 @@
           #   ];
           # };
         };
-      };
-    })
-    (lib.mkIf (config.systemSettings.bootloader != "none") {
-      boot.loader = {
-        efi.canTouchEfiVariables = true;
       };
     })
   ];
