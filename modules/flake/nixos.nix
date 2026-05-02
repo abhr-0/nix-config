@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   lib,
   ...
@@ -12,7 +13,7 @@
       mkNixOS =
         { hostName }:
         inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs hostName; };
+          specialArgs = { inherit inputs hostName self; };
           # > Our main nixos configuration file <
           modules = [
             ../../hosts/${hostName}/configuration.nix

@@ -1,12 +1,21 @@
-{ inputs, hostName, ... }:
+{
+  self,
+  inputs,
+  hostName,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
     useGlobalPkgs = true;
-    # Use sharedModules instead of imports when using home-manager as a NixOS module
-    # sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
-    extraSpecialArgs = { inherit inputs hostName; };
+    sharedModules = [
+      # Use sharedModules instead of imports when using home-manager as a NixOS module
+      # inputs.sops-nix.homeManagerModules.sops
+
+      (inputs.import-tree ../../../home-manager/abhro)
+    ];
+    extraSpecialArgs = { inherit inputs hostName self; };
     users.abhro = ../../../home-manager/abhro/home.nix;
   };
 }

@@ -1,14 +1,4 @@
 {
-  imports = [
-    ./fonts.nix
-    ./gnome.nix
-    ./programs/apps.nix
-    ./programs/dev.nix
-    ./programs/zsh.nix
-    ./scripts/default.nix
-    ./services/flatpak.nix
-  ];
-
   # Set username
   home = {
     username = "abhro";
