@@ -2,7 +2,6 @@
   imports = [
     ./fonts.nix
     ./gnome.nix
-    ./sops.nix
     ./programs/apps.nix
     ./programs/dev.nix
     ./programs/zsh.nix
