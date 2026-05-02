@@ -2,19 +2,23 @@
   pkgs,
   lib,
   inputs,
+  hostName,
   ...
 }:
 {
   imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-  home.packages = with pkgs; [
-    unstable.jetbrains.idea-oss
-    ollama
-
-    nixd
-    nixfmt-rfc-style
-    # vulnix
-  ];
+  home.packages =
+    with pkgs;
+    (
+      [
+        ollama
+        nixd
+        nixfmt-rfc-style
+        # vulnix
+      ]
+      ++ lib.optional (hostName == "laptop") unstable.jetbrains.idea-oss
+    );
 
   programs = {
     nix-index-database.comma.enable = true;
