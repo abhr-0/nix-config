@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   inputs,
@@ -29,14 +30,6 @@
       nix-direnv.enable = true;
     };
 
-    git = {
-      enable = true;
-      settings.user = {
-        name = "abhr-0";
-        email = "121384410+abhr-0@users.noreply.github.com";
-      };
-    };
-
     neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [
@@ -65,6 +58,6 @@
 
   home.sessionVariables = {
     DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
-    EDITOR = "code --wait";
+    EDITOR = "${config.programs.vscode.package}/bin/code --wait";
   };
 }
