@@ -40,6 +40,8 @@
     };
 
   nixpkgs.overlays = [
+    # TODO: Find solution as I cannot customize nixpkgs in home-manager as:
+    # useGlobalPackages = true
     (final: _prev: {
       unstable = import inputs.nixpkgs-unstable {
         inherit (final.stdenv.hostPlatform) system;
