@@ -1,0 +1,29 @@
+{ inputs, ... }:
+{
+  perSystem =
+    { system, ... }:
+    let
+      nixvimLib = inputs.nixvim.lib.${system};
+      nixvim' = inputs.nixvim.legacyPackages.${system};
+      nixvimModule = {
+        inherit system; # or alternatively, set `pkgs`
+        module = inputs.import-tree ../nixvim; # import the module directly
+        # You can use `extraSpecialArgs` to pass additional arguments to your module files
+        extraSpecialArgs = {
+          # inherit (inputs) foo;
+        };
+      };
+      nvim = nixvim'.makeNixvimWithModule nixvimModule;
+    in
+    {
+      checks = {
+        # Run `nix flake check .` to verify that your config is not broken
+        neovim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+      };
+
+      packages = {
+        # Lets you run `nix run .` to start nixvim
+        neovim = nvim;
+      };
+    };
+}

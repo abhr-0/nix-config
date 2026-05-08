@@ -26,7 +26,7 @@ in
   # xdg.desktopEntries not working for some reason
   home.file.".local/share/applications/winrdp.desktop" = {
     executable = true;
-    text = ''
+    text = /* ini */ ''
       [Desktop Entry]
       Name=Windows RDP
       Exec=${winrdpScript}/bin/winrdp

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -7,7 +6,10 @@
   ...
 }:
 {
-  imports = [ inputs.nix-index-database.homeModules.nix-index ];
+  imports = [
+    inputs.nix-index-database.homeModules.nix-index
+    inputs.nixvim.homeModules.nixvim
+  ];
 
   home.packages =
     with pkgs;
@@ -30,19 +32,13 @@
       nix-direnv.enable = true;
     };
 
-    neovim = {
+    nixvim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [
-        {
-          plugin = nvim-surround;
-          config = "lua require('nvim-surround').setup()";
-        }
-      ]; # Note: relative line numbering not working with VSCode Neovim ext
-      extraLuaConfig = lib.readFile ./neovimCfg.lua;
-      extraPackages = [ pkgs.wl-clipboard ]; # For clipboard syncing with OS
+      defaultEditor = true;
+      imports = [ (inputs.import-tree ../../modules/nixvim) ];
     };
 
-    vscode = {
+    vscode = lib.mkIf (hostName == "laptop") {
       enable = true;
       package = pkgs.unstable.vscode;
     };
@@ -58,6 +54,6 @@
 
   home.sessionVariables = {
     DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
-    EDITOR = "${config.programs.vscode.package}/bin/code --wait";
+    # EDITOR = "${config.programs.vscode.package}/bin/code --wait";
   };
 }

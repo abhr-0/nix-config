@@ -49,6 +49,12 @@
     };
 
     import-tree.url = "github:vic/import-tree";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs =
@@ -56,5 +62,6 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ (inputs.import-tree ./modules/flake) ];
       systems = [ "x86_64-linux" ];
+      debug = true; # Used by nixd
     };
 }
