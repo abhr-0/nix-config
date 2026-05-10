@@ -92,55 +92,55 @@
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.smart() end";
-      key = "<leader>ff";
+      key = "<leader>f";
       options.desc = "Find Files (Smart)";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.buffers() end";
-      key = "<leader>fb";
+      key = "<leader>b";
       options.desc = "Find Buffers";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.grep() end";
-      key = "<leader>fg";
+      key = "<leader>/";
       options.desc = "Grep";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.help() end";
-      key = "<leader>fh";
+      key = "<leader>?";
       options.desc = "Find Help";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.keymaps() end";
-      key = "<leader>fk";
+      key = "<leader>sk";
       options.desc = "Find Keymaps";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.diagnostics() end";
-      key = "<leader>fd";
+      key = "<leader>d";
       options.desc = "Find Diagnostics";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_config() end";
-      key = "<leader>fl";
+      key = "<leader>sl";
       options.desc = "Find LSP Servers";
     }
     {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.projects() end";
-      key = "<leader>fp";
+      key = "<leader>sp";
       options.desc = "Find Projects";
     }
     (lib.mkIf config.plugins.todo-comments.enable {
       mode = "n";
       action = lib.nixvim.mkRaw "function() Snacks.picker.todo_comments() end";
-      key = "<leader>ft";
+      key = "<leader>st";
       options.desc = "Find TODOs";
     })
     {
@@ -149,8 +149,17 @@
         "t"
       ];
       action = lib.nixvim.mkRaw "function() Snacks.terminal.toggle() end";
-      key = "<leader>t";
+      key = "<C-\\>";
       options.desc = "Toggle terminal";
+    }
+    {
+      mode = [
+        "n"
+        "t"
+      ];
+      action = lib.nixvim.mkRaw "function() Snacks.terminal.toggle() end";
+      key = "<C-_>";
+      options.desc = "which_key_ignore";
     }
     {
       mode = "n";
