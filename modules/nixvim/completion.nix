@@ -1,5 +1,13 @@
 {
   plugins = {
+    friendly-snippets.enable = true;
+    luasnip = {
+      enable = true;
+      fromVscode = [
+        { }
+      ];
+    };
+
     blink-cmp = {
       enable = true;
       settings = {
