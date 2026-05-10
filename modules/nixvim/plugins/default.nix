@@ -6,10 +6,6 @@
       nvim-autopairs.enable = true;
       lualine.enable = true;
 
-      gitsigns.enable = true; # Toggle cuurent line blame? and more config
-
-      lazygit.enable = true;
-
       treesitter = {
         enable = true;
         highlight.enable = true;
