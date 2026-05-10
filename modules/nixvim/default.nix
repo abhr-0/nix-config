@@ -63,6 +63,48 @@
         key = "<Esc>";
         options.desc = "Clear search highlights";
       }
+      {
+        mode = "i";
+        action = "<Esc>";
+        key = "jk";
+        options.desc = "Clear search highlights";
+      }
+      {
+        mode = "n";
+        action = "<C-w>h";
+        key = "<C-h>";
+        options.desc = "Switch to left split";
+      }
+      {
+        mode = "n";
+        action = "<C-w>j";
+        key = "<C-j>";
+        options.desc = "Switch to bottom split";
+      }
+      {
+        mode = "n";
+        action = "<C-w>k";
+        key = "<C-k>";
+        options.desc = "Switch to top split";
+      }
+      {
+        mode = "n";
+        action = "<C-w>l";
+        key = "<C-l>";
+        options.desc = "Switch to right split";
+      }
+      {
+        mode = "n";
+        action = "<gv";
+        key = "<";
+        options.desc = "Left Indent";
+      }
+      {
+        mode = "n";
+        action = ">gv";
+        key = ">";
+        options.desc = "Right Indent";
+      }
     ];
   };
 }
