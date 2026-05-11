@@ -1,7 +1,14 @@
 { lib, ... }:
 {
   config = {
-    colorschemes.onedark.enable = true;
+    colorschemes = {
+      bamboo.enable = true;
+      onedark.enable = true; # Different tones available
+      gruvbox.enable = true;
+      monokai-pro.enable = true;
+    };
+    colorscheme = "bamboo";
+
     clipboard = {
       register = "unnamedplus";
       providers.wl-copy.enable = true;
