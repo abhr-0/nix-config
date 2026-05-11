@@ -59,7 +59,9 @@
     keymaps = [
       {
         mode = "n";
-        action = "<CMD>nohlsearch<CR>";
+        # The <Esc> is added for flash.nvim not being able to clear highlights
+        # when using `f`, `F`, `t` and `T` motions
+        action = "<CMD>nohlsearch<CR><Esc>";
         key = "<Esc>";
         options.desc = "Clear search highlights";
       }
