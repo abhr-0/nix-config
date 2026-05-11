@@ -21,20 +21,24 @@
         # statix.enable = true;
         nixd = {
           enable = true;
-          config.settings.nixd = {
-            nixpkgs.expr = /* nix */ "import (builtins.getFlake (builtins.toString ./.)).inputs.nixpkgs { } ";
-            formatting = { };
-            options = {
-              nixos.expr = /* nix */ "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.laptop.options";
-              home_manager.expr = /* nix */ "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.laptop.options.home-manager.users.type.getSubOptions []";
+          config.settings.nixd =
+            let
+              flake_path = "(builtins.getFlake (builtins.toString ./.))";
+            in
+            {
+              nixpkgs.expr = "import ${flake_path}.inputs.nixpkgs { } ";
+              formatting = { };
+              options = {
+                nixos.expr = "${flake_path}.nixosConfigurations.laptop.options";
+                home_manager.expr = "${flake_path}.nixosConfigurations.laptop.options.home-manager.users.type.getSubOptions []";
 
-              # Need to enable `debug` option in flake-parts for this
-              flake-parts.expr = /* nix */ "(builtins.getFlake (builtins.toString ./.)).debug.options";
-              flake-parts-sys.expr = /* nix */ "(builtins.getFlake (builtins.toString ./.)).currentSystem.options";
+                # Need to enable `debug` option in flake-parts for this
+                flake-parts.expr = "${flake_path}.debug.options";
+                flake-parts-sys.expr = "${flake_path}.currentSystem.options";
 
-              nixvim.expr = /* nix */ "(builtins.getFlake (builtins.toString ./.)).packages.x86_64-linux.neovim.options";
+                nixvim.expr = "${flake_path}.packages.x86_64-linux.neovim.options";
+              };
             };
-          };
         };
       };
       keymaps = [
