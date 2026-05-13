@@ -29,6 +29,8 @@
       smartindent = true;
       breakindent = true; # ?
 
+      showmode = false;
+
       splitright = true;
       splitbelow = true;
 
