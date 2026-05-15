@@ -6,34 +6,6 @@
       enable = true;
       settings = {
         # bigfile.enabled = true; TODO: enable?
-        dashboard = {
-          enabled = true;
-          # keys # TODO: re-assign
-          sections = [
-            { section = "header"; }
-            {
-              icon = " ";
-              title = "Keymap";
-              section = "keys";
-              indent = 2;
-              padding = 1;
-            }
-            {
-              icon = " ";
-              title = "Recent Files";
-              section = "recent_files";
-              indent = 2;
-              padding = 2;
-            }
-            {
-              icon = " ";
-              title = "Projects";
-              section = "projects";
-              indent = 2;
-              padding = 2;
-            }
-          ];
-        };
         indent.enabled = true; # TODO: Multi-color?
         notifier.enabled = true;
         quickfile.enabled = false;
@@ -130,12 +102,6 @@
       action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_config() end";
       key = "<leader>sl";
       options.desc = "Find LSP Servers";
-    }
-    {
-      mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.projects() end";
-      key = "<leader>sp";
-      options.desc = "Find Projects";
     }
     (lib.mkIf config.plugins.todo-comments.enable {
       mode = "n";
