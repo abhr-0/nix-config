@@ -4,21 +4,12 @@
     # For sane LSP defaults
     plugins.lspconfig.enable = true;
 
-    autoCmd = [
-      {
-        event = [ "BufWritePre" ];
-        pattern = "*";
-        callback = lib.nixvim.mkRaw "function() vim.lsp.buf.format({ async = false }) end";
-      }
-    ];
-
     lsp = {
       inlayHints.enable = true;
       servers = {
         clangd.enable = true;
-        markdown_oxide.enable = true; # Checkout
-        # python: basedpyright and ruff?
-        # statix.enable = true;
+        basedpyright.enable = true;
+        ruff.enable = true;
         nixd = {
           enable = true;
           config.settings.nixd =
