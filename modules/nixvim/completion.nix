@@ -1,5 +1,7 @@
 {
   plugins = {
+    nvim-autopairs.enable = true;
+
     friendly-snippets.enable = true;
     luasnip = {
       enable = true;

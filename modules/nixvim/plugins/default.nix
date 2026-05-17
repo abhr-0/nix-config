@@ -3,7 +3,6 @@
     plugins = {
       web-devicons.enable = true; # Icons
 
-      nvim-autopairs.enable = true;
       lualine.enable = true;
 
       treesitter = {
