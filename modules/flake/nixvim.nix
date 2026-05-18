@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 {
   perSystem =
     { system, ... }:
@@ -11,6 +11,7 @@
         # You can use `extraSpecialArgs` to pass additional arguments to your module files
         extraSpecialArgs = {
           # inherit (inputs) foo;
+          inherit self;
         };
       };
       nvim = nixvim'.makeNixvimWithModule nixvimModule;

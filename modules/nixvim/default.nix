@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ self, lib, ... }:
 {
   config = {
+    # As nixvim manages it's own nixpkgs
+    nixpkgs.overlays = [ self.overlays.default ];
     colorschemes = {
       bamboo.enable = true;
       onedark.enable = true; # Different tones available
