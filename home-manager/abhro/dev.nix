@@ -6,10 +6,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.nix-index-database.homeModules.nix-index
-    inputs.nixvim.homeModules.nixvim
-  ];
+  imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
   home.packages =
     with pkgs;
@@ -30,12 +27,6 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
-    };
-
-    nixvim = {
-      enable = true;
-      defaultEditor = true;
-      imports = [ (inputs.import-tree ../../modules/nixvim) ];
     };
 
     vscode = lib.mkIf (hostName == "laptop") {
