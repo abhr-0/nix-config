@@ -36,6 +36,8 @@
       splitright = true;
       splitbelow = true;
 
+      winborder = "rounded";
+
       scrolloff = 4;
       sidescrolloff = 4;
 
