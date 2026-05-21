@@ -21,6 +21,9 @@
             user = " User";
           };
           window.width = 0.3;
+
+          # Disabled as blink.cmp is used instead
+          chat_autocomplete = false;
         };
       };
     };
