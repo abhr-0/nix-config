@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   config = {
     # For sane LSP defaults
@@ -38,28 +37,14 @@
           lspBufAction = "definition";
         }
         {
-          action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count=-1, float=true }) end";
-          key = "<leader>k";
-          options.desc = "Prev Diagonistic";
-        }
-        {
-          action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count=1, float=true }) end";
-          key = "<leader>j";
-          options.desc = "Next Diagonistic";
+          key = "gD";
+          lspBufAction = "declaration";
         }
         {
           action = "<CMD>lsp restart<Enter>";
           key = "<leader>l";
           options.desc = "Restart LSP";
         }
-        # {
-        #   action = lib.nixvim.mkRaw "require('telescope.builtin').lsp_definitions";
-        #   key = "gd";
-        # }
-        # {
-        #   action = "<CMD>Lspsaga hover_doc<Enter>";
-        #   key = "K";
-        # }
       ];
       luaConfig.post = ''
         local severity = vim.diagnostic.severity
@@ -73,6 +58,8 @@
               [severity.INFO] = " ",
             },
           },
+          float = { source = "always", },
+          jump = { float = true, },
         })
       '';
     };
