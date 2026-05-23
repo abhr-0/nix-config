@@ -7,7 +7,7 @@
 {
   flake =
     let
-      hosts = builtins.attrNames (builtins.readDir ../../hosts);
+      hosts = builtins.attrNames (builtins.readDir ../hosts);
       genNixosConfigurations =
         configurationList: lib.genAttrs configurationList (name: mkNixOS { hostName = name; });
       mkNixOS =
@@ -16,8 +16,8 @@
           specialArgs = { inherit inputs hostName self; };
           # > Our main nixos configuration file <
           modules = [
-            ../../hosts/${hostName}/configuration.nix
-            (inputs.import-tree ../nixos)
+            ../hosts/${hostName}/configuration.nix
+            (inputs.import-tree ../nixosModules)
           ];
         };
     in
