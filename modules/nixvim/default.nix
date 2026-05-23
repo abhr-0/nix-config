@@ -108,14 +108,16 @@
         key = "<C-l>";
         options.desc = "Switch to right split";
       }
+
+      # Better indenting in visual mode
       {
-        mode = "n";
+        mode = "v";
         action = "<gv";
         key = "<";
         options.desc = "Left Indent";
       }
       {
-        mode = "n";
+        mode = "v";
         action = ">gv";
         key = ">";
         options.desc = "Right Indent";
