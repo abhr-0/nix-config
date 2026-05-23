@@ -27,6 +27,7 @@
             id = "JioFiber-5G";
             interface-name = "wlp3s0";
             type = "wifi";
+            zone = "home";
           };
           ipv4 = {
             method = "auto";
