@@ -35,10 +35,12 @@
         {
           key = "gd"; # or <C-]> look `:h lsp-defaults`
           lspBufAction = "definition";
+          options.desc = "Go to definition";
         }
         {
           key = "gD";
           lspBufAction = "declaration";
+          options.desc = "Go to declaration";
         }
         {
           action = "<CMD>lsp restart<Enter>";
