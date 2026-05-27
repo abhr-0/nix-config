@@ -51,6 +51,11 @@
       luaConfig.post = ''
         local severity = vim.diagnostic.severity
 
+        local function on_jump(diagnostic, bufnr)
+          if not diagnostic then return end
+          vim.diagnostic.open_float()
+        end
+
         vim.diagnostic.config({
           signs = {
             text = {
@@ -61,7 +66,7 @@
             },
           },
           float = { source = "always", },
-          jump = { float = true, },
+          jump = { on_jump = on_jump },
         })
       '';
     };
