@@ -21,7 +21,6 @@
     opts = {
       number = true;
       relativenumber = true;
-      colorcolumn = [ 80 ]; # Change?
       cursorline = true;
 
       tabstop = 2;
