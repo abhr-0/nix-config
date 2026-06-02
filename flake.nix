@@ -50,11 +50,7 @@
 
     import-tree.url = "github:vic/import-tree";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-parts.follows = "flake-parts";
-    };
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
