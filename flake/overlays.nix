@@ -5,10 +5,10 @@
         # TODO: Remove when fix is merged upstream
         CopilotChat-nvim = prev'.CopilotChat-nvim.overrideAttrs (_: {
           src = final.fetchFromGitHub {
-            owner = "abhr-0";
+            owner = "CopilotC-Nvim";
             repo = "CopilotChat.nvim";
-            rev = "1564-auto-insert-mode-fix";
-            hash = "sha256-SmOVivGlDXxbPdgeb83utwg/u512BcKboknSNap0uok=";
+            rev = "2025f92022bef434de0511c5157a19974a9377a4";
+            hash = "sha256-YyzJBoOVYefBlpck9O80BdPjQIlH6p5o6Ta2n9aWu4A=";
           };
           version = "local";
         });
