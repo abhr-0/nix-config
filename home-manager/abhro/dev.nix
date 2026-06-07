@@ -14,7 +14,7 @@
       [
         ollama
         nixd
-        nixfmt-rfc-style
+        nixfmt
         # vulnix
       ]
       ++ lib.optional (hostName == "laptop") unstable.jetbrains.idea-oss

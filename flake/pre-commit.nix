@@ -16,7 +16,7 @@
           # inherit excludes; # FIXME #1
           settings.ignore = excludes;
         };
-        nixfmt-rfc-style = {
+        nixfmt = {
           enable = true;
           inherit excludes;
         };
