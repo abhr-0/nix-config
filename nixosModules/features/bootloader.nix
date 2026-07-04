@@ -89,16 +89,16 @@
             autoReboot = true;
           };
 
-          # TODO: Enable later as lanzaboote v1.0.0 doesn't support measured
-          # boot, next release should have it
-          # measuredBoot = {
-          #   enable = true;
-          #   pcrs = [
-          #     0
-          #     4
-          #     7
-          #   ];
-          # };
+          # Max config limit is 8 for measured boot
+          configurationLimit = 8;
+          measuredBoot = {
+            enable = true;
+            pcrs = [
+              0
+              4
+              7
+            ];
+          };
         };
       };
     })
