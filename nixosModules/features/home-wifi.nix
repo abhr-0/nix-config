@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   ...
@@ -10,7 +9,7 @@
   config = lib.mkIf config.systemSettings.homeWifi.enable {
     sops = {
       secrets = {
-        home_wifi_password.sopsFile = "${inputs.nix-secrets}/secrets/host.yaml";
+        home_wifi_password.sopsFile = ../../secrets/host.yaml;
       };
       templates = {
         "network_manager.env".content = ''

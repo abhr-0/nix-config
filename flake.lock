@@ -243,24 +243,6 @@
         "type": "github"
       }
     },
-    "nix-secrets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777878084,
-        "narHash": "sha256-a2L/8AjDzzZW1Bm5TXvsNXAdYVTdZowQ3xhwrYmfhNk=",
-        "ref": "main",
-        "rev": "f43b94b894f95606be8ceffc3cf92cef329e42ac",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/abhr-0/nix-secrets.git"
-      },
-      "original": {
-        "ref": "main",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/abhr-0/nix-secrets.git"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1767892417,
@@ -390,7 +372,6 @@
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
-        "nix-secrets": "nix-secrets",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",

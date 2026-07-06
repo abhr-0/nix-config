@@ -17,11 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-secrets = {
-      url = "git+ssh://git@github.com/abhr-0/nix-secrets.git?ref=main&shallow=1";
-      flake = false;
-    };
-
     # Secureboot support
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";

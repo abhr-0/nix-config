@@ -7,6 +7,8 @@
           nixd
           nixfmt
           nurl
+          age
+          sops
         ];
 
         shellHook = ''

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   ...
 }:
 let
@@ -10,7 +9,7 @@ let
   );
 
   usersWithIcon = builtins.filter (
-    username: builtins.pathExists "${inputs.nix-secrets}/secrets/${username}Icon.enc"
+    username: builtins.pathExists ../../secrets/${username}Icon.enc
   ) normalUsers;
 in
 {
@@ -19,7 +18,7 @@ in
       name = "${username}Icon";
       value = {
         format = "binary";
-        sopsFile = "${inputs.nix-secrets}/secrets/${username}Icon.enc";
+        sopsFile = ../../secrets/${username}Icon.enc;
         path = "/var/lib/AccountsService/icons/${username}";
         mode = "0644";
       };
