@@ -14,7 +14,7 @@
       settings = {
         # Commit Author
         user = {
-          name = "abhr-0";
+          name = "Abhraneel Mukherjee";
           email = "121384410+abhr-0@users.noreply.github.com";
         };
 
