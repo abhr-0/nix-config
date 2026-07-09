@@ -15,5 +15,6 @@ This repo contains my NixOS (+ home-manager) configuration.
 | `./modules/flake/*` | Contains flake-parts modules       |
 | `./modules/nixos/*` | NixOS modules                      |
 | `./modules/nixvim/*`| Nixvim modules                     |
+| `./secrets/*`       | Secrets                            |
 
 > This config was initialised using [Mysterio77/nix-starter-configs](https://github.com/Misterio77/nix-starter-configs)
