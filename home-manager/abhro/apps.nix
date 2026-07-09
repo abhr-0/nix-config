@@ -7,7 +7,7 @@
       ------------------
     */
     authenticator # TOTP provider
-    bitwarden-desktop # Bitwarden Desktop Client
+    # bitwarden-desktop # Bitwarden Desktop Client
     protonvpn-gui # VPN
     # torbrowser-launcher
     vaults # Encrypted vaults
