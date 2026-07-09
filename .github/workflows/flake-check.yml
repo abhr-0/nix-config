@@ -5,12 +5,12 @@ on:
     branches: ["main"]
   pull_request:
 
-permissions:
-  contents: read
-
 jobs:
   flake-check:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
 
     steps:
       - uses: actions/checkout@v7
