@@ -17,14 +17,10 @@
       nvim = nixvim'.makeNixvimWithModule nixvimModule;
     in
     {
-      checks = {
-        # Run `nix flake check .` to verify that your config is not broken
-        neovim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-      };
+      # Run `nix flake check .` to verify that your config is not broken
+      checks.neovim = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
 
-      packages = {
-        # Lets you run `nix run .` to start nixvim
-        neovim = nvim;
-      };
+      # Lets you run `nix run .` to start nixvim
+      packages.neovim = nvim;
     };
 }
