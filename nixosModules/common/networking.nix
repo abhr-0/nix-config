@@ -28,8 +28,10 @@
   # Look: https://nixos.wiki/wiki/Encrypted_DNS#Setting_nameservers
   services.resolved = {
     enable = true;
-    domains = [ "~." ];
-    dnsovertls = "true";
-    dnssec = "true";
+    settings.Resolve = {
+      Domains = [ "~." ];
+      DNSOverTLS = "true";
+      DNSSEC = "true";
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   # GUI Applications
   home.packages = with pkgs; [
@@ -8,7 +8,7 @@
     */
     authenticator # TOTP provider
     # bitwarden-desktop # Bitwarden Desktop Client
-    protonvpn-gui # VPN
+    proton-vpn # VPN
     # torbrowser-launcher
     vaults # Encrypted vaults
 
@@ -49,6 +49,7 @@
 
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     package = pkgs.firefox.override {
       nativeMessagingHosts = [
         # Gnome shell native connector

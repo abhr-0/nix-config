@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -32,6 +33,7 @@
 
     zsh = {
       enable = true; # Must explicity include for direnv and starship
+      dotDir = "${config.xdg.configHome}/zsh";
 
       autosuggestion.enable = true;
       enableCompletion = true;
