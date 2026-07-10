@@ -1,11 +1,6 @@
 name: Dependabot Auto-Merge
 
-on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
+on: pull_request
 
 permissions:
   contents: write
@@ -21,5 +16,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
-        run: |
+        run: |-
           gh pr merge --auto --squash "$PR_URL"
