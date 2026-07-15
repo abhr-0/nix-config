@@ -17,7 +17,7 @@
         nixfmt
         # vulnix
       ]
-      ++ lib.optional (hostName == "laptop") unstable.jetbrains.idea-oss
+      ++ lib.optional (hostName == "earth") unstable.jetbrains.idea-oss
     );
 
   programs = {
@@ -29,7 +29,7 @@
       nix-direnv.enable = true;
     };
 
-    vscode = lib.mkIf (hostName == "laptop") {
+    vscode = lib.mkIf (hostName == "earth") {
       enable = true;
       package = pkgs.unstable.vscode;
     };

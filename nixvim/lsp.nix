@@ -19,8 +19,8 @@
               nixpkgs.expr = "import ${flake_path}.inputs.nixpkgs { } ";
               formatting = { };
               options = {
-                nixos.expr = "${flake_path}.nixosConfigurations.laptop.options";
-                home_manager.expr = "${flake_path}.nixosConfigurations.laptop.options.home-manager.users.type.getSubOptions []";
+                nixos.expr = "${flake_path}.nixosConfigurations.earth.options";
+                home_manager.expr = "${flake_path}.nixosConfigurations.earth.options.home-manager.users.type.getSubOptions []";
 
                 # Need to enable `debug` option in flake-parts for this
                 flake-parts.expr = "${flake_path}.debug.options";

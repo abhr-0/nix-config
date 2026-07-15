@@ -1,24 +1,24 @@
 keys:
   - &abhro age1z7p3rey3aavfrpul5xg7jdrmwsw37fglnkgnmjd2a98dhzlmq58q6saeaa
-  - &laptop age1945gxc3786mxqyj2rxn37ans407qxsvqh0agcet5adxuenm9kycsv35r8z
-  - &desktop age1m4d87mngyen9a2x45rgs5tpc5rsss0qu68qtdezpudeagn7qmveqffxnua
+  - &earth age1945gxc3786mxqyj2rxn37ans407qxsvqh0agcet5adxuenm9kycsv35r8z
+  - &pluto age1m4d87mngyen9a2x45rgs5tpc5rsss0qu68qtdezpudeagn7qmveqffxnua
 creation_rules:
   - path_regex: secrets/(abhroIcon|host)\.(yaml|enc)$
     key_groups:
       - age:
           - *abhro
-          - *laptop
-          - *desktop
-  - path_regex: secrets/laptop\.(yaml|enc)$
+          - *earth
+          - *pluto
+  - path_regex: secrets/earth\.(yaml|enc)$
     key_groups:
       - age:
           - *abhro
-          - *laptop
-  - path_regex: secrets/desktop\.(yaml|enc)$
+          - *earth
+  - path_regex: secrets/pluto\.(yaml|enc)$
     key_groups:
       - age:
           - *abhro
-          - *desktop
+          - *pluto
   - path_regex: secrets/[^/]+\.(yaml|enc)$
     key_groups:
       - age:
