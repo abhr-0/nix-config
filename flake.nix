@@ -37,12 +37,6 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
-    # Templates
-    templates = {
-      url = "github:the-nix-way/dev-templates";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     import-tree.url = "github:vic/import-tree";
 
     nixvim.url = "github:nix-community/nixvim";

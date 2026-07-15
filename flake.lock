@@ -375,8 +375,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
-        "sops-nix": "sops-nix",
-        "templates": "templates"
+        "sops-nix": "sops-nix"
       }
     },
     "rust-overlay": {
@@ -433,26 +432,6 @@
         "owner": "nix-systems",
         "ref": "future-26.11",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "templates": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1781225543,
-        "narHash": "sha256-X/YTlfr7ohqCbvlveYPORPxm8g2pPOakFdUlkqLknVk=",
-        "owner": "the-nix-way",
-        "repo": "dev-templates",
-        "rev": "6a7eefd8fd910a831de525811393e499bc06dfa1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "the-nix-way",
-        "repo": "dev-templates",
         "type": "github"
       }
     }
