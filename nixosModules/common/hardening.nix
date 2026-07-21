@@ -27,8 +27,4 @@
 
   # Enable OpenSnitch
   # services.opensnitch.enable = true;
-
-  # Recommended to be set to false, as it allows gaining root access by modifying kernel parameters
-  # Enabled by default for backwards compatibility.
-  boot.loader.systemd-boot.editor = false;
 }

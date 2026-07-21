@@ -70,7 +70,14 @@
             canTouchEfiVariables = true;
           };
 
-          systemd-boot.enable = lib.mkForce false;
+          systemd-boot = {
+            enable = lib.mkForce false;
+
+            # Recommended to be set to false, as it allows gaining root access by modifying kernel parameters
+            # Enabled by default for backwards compatibility.
+            # Lanzaboote automatically sets it's editor option to this value
+            editor = false;
+          };
 
           # Hide the OS choice for bootloaders.
           # It's still possible to open the bootloader list by holding "Esc"
