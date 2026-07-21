@@ -44,7 +44,6 @@
   # };
 
   home.sessionVariables = {
-    DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
     # EDITOR = "${config.programs.vscode.package}/bin/code --wait";
   };
 }
