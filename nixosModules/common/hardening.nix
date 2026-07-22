@@ -24,7 +24,4 @@
 
   # Disable coredumps
   systemd.coredump.enable = true;
-
-  # Enable OpenSnitch
-  # services.opensnitch.enable = true;
 }
