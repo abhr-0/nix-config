@@ -9,6 +9,7 @@
 
   home-manager = {
     useGlobalPkgs = true;
+    useUserPackages = true;
     sharedModules = [
       # Use sharedModules instead of imports when using home-manager as a NixOS module
       # inputs.sops-nix.homeManagerModules.sops
