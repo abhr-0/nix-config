@@ -3,7 +3,7 @@ keys:
   - &earth age1945gxc3786mxqyj2rxn37ans407qxsvqh0agcet5adxuenm9kycsv35r8z
   - &pluto age1m4d87mngyen9a2x45rgs5tpc5rsss0qu68qtdezpudeagn7qmveqffxnua
 creation_rules:
-  - path_regex: secrets/(abhroIcon|host)\.(yaml|enc)$
+  - path_regex: secrets/host).(yaml|enc)$
     key_groups:
       - age:
           - *abhro
