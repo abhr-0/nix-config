@@ -8,17 +8,12 @@
 {
   imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-  home.packages =
-    with pkgs;
-    (
-      [
-        ollama
-        nixd
-        nixfmt
-        # vulnix
-      ]
-      ++ lib.optional (hostName == "earth") unstable.jetbrains.idea-oss
-    );
+  home.packages = with pkgs; [
+    ollama
+    nixd
+    nixfmt
+    # vulnix
+  ];
 
   programs = {
     nix-index-database.comma.enable = true;
