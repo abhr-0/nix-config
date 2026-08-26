@@ -49,7 +49,7 @@
         lockAll = true;
         settings."org/gnome/desktop/interface" = {
           cursor-theme = "Bibata-Modern-Classic"; # Needs bibata-cursors installed
-          cursor-size = lib.gvariant.mkInt32 32;
+          cursor-size = lib.gvariant.mkInt32 24;
         };
       }
     ];
