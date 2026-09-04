@@ -23,6 +23,13 @@
   # Prevents flickering when booting, but makes the initrd bloated too
   hardware.amdgpu.initrd.enable = true;
 
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 24 * 1024; # 24GiB
+    }
+  ];
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }

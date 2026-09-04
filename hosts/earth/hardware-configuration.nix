@@ -33,6 +33,12 @@
       options = [ "subvol=nix" "compress=zstd:1" "noatime"];
     };
 
+    fileSystems."/swap" =
+    { device = "/dev/mapper/cryptroot";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/9F4E-1E40";
       fsType = "vfat";
