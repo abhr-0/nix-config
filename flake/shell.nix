@@ -8,6 +8,7 @@
           nixfmt
           nurl
           age
+          ssh-to-age
           sops
         ];
 
