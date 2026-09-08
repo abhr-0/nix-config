@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   inputs,
   hostName,
   ...
@@ -24,10 +23,7 @@
       nix-direnv.enable = true;
     };
 
-    vscode = lib.mkIf (hostName == "earth") {
-      enable = true;
-      package = pkgs.unstable.vscode;
-    };
+    vscode.enable = hostName == "earth";
   };
 
   # Note: GNOME's seahorse replaces the functionality of ssh, ssh-agent, gpg and gpg-agent

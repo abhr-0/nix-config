@@ -2,7 +2,7 @@
 {
   config = {
     # As nixvim manages it's own nixpkgs
-    nixpkgs.overlays = [ self.overlays.default ];
+    nixpkgs.overlays = [ self.overlays.nixvim ];
     nixpkgs.config.allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
