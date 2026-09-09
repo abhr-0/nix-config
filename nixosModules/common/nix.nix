@@ -1,44 +1,18 @@
+{ self, inputs, ... }:
 {
-  self,
-  config,
-  inputs,
-  lib,
-  ...
-}:
-{
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      settings = {
-        # Enable flakes and new 'nix' command
-        experimental-features = "nix-command flakes";
-        # Opinionated: disable global registry
-        flake-registry = "";
-        # Workaround for https://github.com/NixOS/nix/issues/9574
-        nix-path = config.nix.nixPath;
+  nix = {
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Opinionated: disable global registry
+      flake-registry = "";
 
-        #Custom Settings
-        auto-optimise-store = true;
-        trusted-users = [
-          "root"
-          "@wheel"
-        ]; # "@wheel" was added for devenv
-      };
-      # Opinionated: disable channels
-      channel.enable = false;
-
-      # Opinionated: make flake registry and nix path match flake inputs
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-
-      # Enable automatic garbage collection of nix store
-      gc = {
-        automatic = true;
-        dates = "weekly";
-      };
+      auto-optimise-store = true;
     };
+    # Opinionated: disable channels
+    channel.enable = false;
+    registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+  };
 
   nixpkgs.overlays = [ self.overlays.unstable ];
 
