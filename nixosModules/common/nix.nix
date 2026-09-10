@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   nix = {
     settings = {
@@ -13,8 +13,6 @@
     channel.enable = false;
     registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
   };
-
-  nixpkgs.overlays = [ self.overlays.unstable ];
 
   programs.nix-ld.enable = true;
   #services.envfs.enable = true;

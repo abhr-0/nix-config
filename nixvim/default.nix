@@ -1,13 +1,6 @@
-{ self, lib, ... }:
+{ lib, ... }:
 {
   config = {
-    # As nixvim manages it's own nixpkgs
-    nixpkgs.overlays = [ self.overlays.nixvim ];
-    nixpkgs.config.allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "copilot-language-server" # FIXME: Temporary
-      ];
     colorschemes = {
       bamboo.enable = true;
       onedark.enable = true; # Different tones available

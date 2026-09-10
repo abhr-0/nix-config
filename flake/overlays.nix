@@ -1,5 +1,5 @@
 { inputs, lib, ... }: {
-  flake.overlays = {
+  flake.overlays = rec {
     nixvim = final: prev: {
       vimPlugins = prev.vimPlugins.extend (
         _: _: {
@@ -19,7 +19,7 @@
       );
     };
 
-    unstable = final: _prev: rec {
+    unstable-packages = final: _prev: rec {
       unstable = import inputs.nixpkgs-unstable {
         inherit (final.stdenv.hostPlatform) system;
         # TODO: Find solution as I cannot customize nixpkgs in home-manager as:
@@ -29,5 +29,7 @@
       inherit (unstable) lazygit;
       inherit (unstable) vscode;
     };
+
+    default = unstable-packages;
   };
 }

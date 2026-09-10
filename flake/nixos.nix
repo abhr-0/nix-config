@@ -18,6 +18,7 @@
           modules = [
             ../hosts/${hostName}/configuration.nix
             (inputs.import-tree ../nixosModules)
+            { nixpkgs.overlays = [ self.overlays.default ]; }
           ];
         };
     in
