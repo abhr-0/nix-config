@@ -1,4 +1,10 @@
-{ inputs, lib, ... }: {
+{
+  self,
+  inputs,
+  lib,
+  ...
+}:
+{
   flake.overlays = rec {
     nixvim = final: prev: {
       vimPlugins = prev.vimPlugins.extend (
@@ -30,6 +36,10 @@
       inherit (unstable) vscode;
     };
 
-    default = unstable-packages;
+    additions = final: _prev: {
+      localPackages = {
+        inherit (self.packages."${final.stdenv.hostPlatform.system}") neovim;
+      };
+    };
   };
 }

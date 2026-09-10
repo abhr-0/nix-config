@@ -1,4 +1,13 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  hostName,
+  ...
+}:
+{
+  imports = [ inputs.nix-index-database.homeModules.nix-index ];
+
   home = {
     username = "abhro";
     homeDirectory = "/home/abhro";
@@ -37,6 +46,14 @@
       # textpieces
       # raider # File shredder
 
+      # Various Tools
+      localPackages.neovim # Neovim with custom config
+      ollama # LLM runtime
+      nixd # Nix LSP Server
+      nixfmt # Nix Formatter
+      # vulnix
+      # distrobox
+
       nerd-fonts.fira-code # Used by ghostty, starship & VSCodium configs
       nerd-fonts.caskaydia-cove
       nerd-fonts.jetbrains-mono
@@ -46,19 +63,33 @@
       ibm-plex
       inter
     ];
+
+    sessionVariables.EDITOR = "nvim";
+    # shellAliases.vimdiff = "nvim -d";
+
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    stateVersion = "24.11";
   };
 
-  programs.firefox = {
-    enable = true;
-    configPath = "${config.xdg.configHome}/mozilla/firefox";
-    package = pkgs.firefox.override {
-      nativeMessagingHosts = [ pkgs.gnome-browser-connector ]; # Gnome shell native connector
+  programs = {
+    firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
+      package = pkgs.firefox.override {
+        nativeMessagingHosts = [ pkgs.gnome-browser-connector ]; # Gnome shell native connector
+      };
     };
+
+    nix-index-database.comma.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    vscode.enable = hostName == "earth";
   };
 
   # Load fonts
   fonts.fontconfig.enable = true;
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.11";
 }
