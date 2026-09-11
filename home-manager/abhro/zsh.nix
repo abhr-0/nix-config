@@ -26,7 +26,7 @@
 
     starship = {
       enable = true;
-      settings = (lib.modules.importTOML ./starship.toml).config; # Import settings from starship.toml
+      settings = lib.importTOML ./starship.toml; # Import settings from starship.toml
     };
 
     zoxide.enable = true;
