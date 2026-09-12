@@ -1,11 +1,12 @@
-# FIXME
 {
-  # Enable Flatpak Support
+  i18n = {
+    defaultLocale = "en_IN";
+    extraLocales = [ "en_US.UTF-8/UTF-8" ];
+  };
+
   services.flatpak.enable = true;
 
-  # Appimage support
   programs.appimage.binfmt = true;
 
-  # Enable zram
   zramSwap.enable = true;
 }
