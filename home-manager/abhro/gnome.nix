@@ -11,24 +11,15 @@
   programs.gnome-shell = {
     enable = true;
 
-    extensions = with pkgs.gnomeExtensions; [
-      {
-        id = "AlphabeticalAppGrid@stuarthayhurst";
-        package = alphabetical-app-grid;
-      }
-      {
-        id = "appindicatorsupport@rgcjonas.gmail.com";
-        package = appindicator;
-      }
-      {
-        id = "clipboard-indicator@tudmotu.com";
-        package = clipboard-indicator;
-      }
-      {
-        id = "dash-to-dock@micxgx.gmail.com";
-        package = dash-to-dock;
-      }
-    ];
+    extensions = map (package: { inherit package; }) (
+      with pkgs.gnomeExtensions;
+      [
+        alphabetical-app-grid
+        appindicator
+        clipboard-indicator
+        dash-to-dock
+      ]
+    );
   };
 
   dconf = {
