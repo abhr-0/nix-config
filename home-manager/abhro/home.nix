@@ -54,14 +54,7 @@
       # vulnix
       # distrobox
 
-      nerd-fonts.fira-code # Used by ghostty, starship & VSCodium configs
-      nerd-fonts.caskaydia-cove
-      nerd-fonts.jetbrains-mono
-      noto-fonts
-      roboto
-      source-sans
-      ibm-plex
-      inter
+      nerd-fonts.jetbrains-mono # Used by VSCode
     ];
 
     sessionVariables.EDITOR = "nvim";
@@ -90,6 +83,7 @@
     vscode.enable = hostName == "earth";
   };
 
-  # Load fonts
+  # WARN: Keep this to load fonts when if no fonts seem to be added in config
+  # Read: https://wiki.nixos.org/wiki/Fonts#Let_Fontconfig_know_the_fonts_within_your_Nix_profile
   fonts.fontconfig.enable = true;
 }
