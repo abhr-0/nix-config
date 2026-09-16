@@ -53,7 +53,6 @@
 
       defaultKeymap = "viins";
     };
-
   };
 
   # home.packages = with pkgs; [
