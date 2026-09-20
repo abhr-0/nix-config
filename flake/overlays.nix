@@ -21,6 +21,7 @@
             };
             version = "0.0.0-unstable-2027-05-19";
           };
+          inherit ((unstable-packages final prev).unstable.vimPlugins) copilot-lua;
         }
       );
     };
@@ -30,7 +31,12 @@
         inherit (final.stdenv.hostPlatform) system;
         # TODO: Find solution as I cannot customize nixpkgs in home-manager as:
         # useGlobalPackages = true
-        config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "vscode" ];
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "vscode"
+            "copilot-language-server" # FIXME: Temporary
+          ];
       };
       inherit (unstable) lazygit;
       inherit (unstable) vscode;
