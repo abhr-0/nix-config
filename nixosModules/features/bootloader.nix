@@ -96,8 +96,8 @@
             autoReboot = true;
           };
 
-          # Max config limit is 8 for measured boot
-          configurationLimit = 8;
+          # NOTE: Max config limit is 4 for measured boot
+          configurationLimit = 4;
           measuredBoot = {
             enable = true;
             pcrs = [
