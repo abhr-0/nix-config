@@ -19,7 +19,7 @@
       };
 
       render-markdown.enable = true;
-      rainbow-delimiters.enable = true;
+      # rainbow-delimiters.enable = true; # TODO: Keep this?
     };
   };
 }

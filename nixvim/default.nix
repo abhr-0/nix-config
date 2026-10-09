@@ -1,13 +1,17 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
   config = {
     colorschemes = {
-      bamboo.enable = true;
-      onedark.enable = true; # Different tones available
+      kanagawa.enable = true;
+      onedark.enable = true;
       gruvbox.enable = true;
-      monokai-pro.enable = true;
     };
-    colorscheme = "bamboo";
+    colorscheme = "kanagawa";
+    extraPlugins = with pkgs.vimPlugins; [
+      zenbones-nvim
+      lush-nvim
+    ];
+    plugins.yazi.enable = true;
 
     clipboard = {
       register = "unnamedplus";

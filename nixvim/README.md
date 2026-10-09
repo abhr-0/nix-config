@@ -15,6 +15,7 @@ Only `lang.nix`, `lsp.nix` and `format.nix` contain language specific configs
 - `ZZ` and `ZQ`
 - `]b`, `[b` to switch buffers and to delete?
 - double backtick toggles last jump
+- `]<Space>`, `[<Space>` adds line to prev or next line and remains in NORMAL mode
 
 ## In Visual Mode
 - expand selection: `an`

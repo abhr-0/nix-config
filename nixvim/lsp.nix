@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   config = {
     # For sane LSP defaults
     plugins.lspconfig.enable = true;
@@ -26,7 +26,7 @@
                 flake-parts.expr = "${flake_path}.debug.options";
                 flake-parts-sys.expr = "${flake_path}.currentSystem.options";
 
-                nixvim.expr = "${flake_path}.packages.x86_64-linux.neovim.options";
+                nixvim.expr = "${flake_path}.packages.${pkgs.stdenv.hostPlatform.system}.neovim.options"; # NOTE: `stdenv.hostPlatform.system` is used to automatically set the correct system.
               };
             };
         };
