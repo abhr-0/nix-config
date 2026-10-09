@@ -1,5 +1,4 @@
 {
-  # Note: Needed by sops to generate host key file
   services.openssh = {
     enable = true;
     settings = {
