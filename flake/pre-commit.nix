@@ -1,25 +1,15 @@
 { inputs, ... }:
 {
   imports = [ inputs.git-hooks-nix.flakeModule ];
-  perSystem = {
-    pre-commit.settings.hooks =
-      let
-        excludes = [ "hardware-configuration\\.nix" ];
-      in
-      {
-        deadnix = {
-          enable = true;
-          inherit excludes;
-        };
-        statix = {
-          enable = true;
-          # inherit excludes; # FIXME #1
-          settings.ignore = excludes;
-        };
-        nixfmt = {
-          enable = true;
-          inherit excludes;
-        };
+  perSystem.pre-commit.settings = {
+    excludes = [ "hardware-configuration\\.nix" ];
+    hooks = {
+      deadnix.enable = true;
+      statix = {
+        enable = true;
+        settings.ignore = [ "hardware-configuration\\.nix" ]; # FIXME #1
       };
+      nixfmt.enable = true;
+    };
   };
 }
