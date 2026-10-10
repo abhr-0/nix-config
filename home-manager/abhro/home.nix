@@ -47,7 +47,7 @@
       # raider # File shredder
 
       # Various Tools
-      localPackages.neovim # Neovim with custom config
+      localPkgs.neovim # Neovim with custom config
       ollama # LLM runtime
       nixd # Nix LSP Server
       nixfmt # Nix Formatter
