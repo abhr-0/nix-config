@@ -23,5 +23,6 @@ This configuration is cuurently used by the following hosts:
 | `./flake/*`         | Contains flake-parts modules        |
 | `./nixosModules/*`  | NixOS modules                       |
 | `./nixvim/*`        | Nixvim modules                      |
+| `./pkgs/*`          | Local package declarations          |
 | `./secrets/*`       | Secrets (Encrypted with sops + age) |
 
