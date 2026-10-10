@@ -12,25 +12,22 @@
           # final' and prev'
           # Not in nixpkgs
           blink-cmp-copilot-chat = final.callPackage ../pkgs/blink-cmp-copilot-chat.nix { };
-          inherit ((unstable-packages final prev).unstable.vimPlugins) copilot-lua;
         }
       );
     };
 
-    unstable-packages = final: _prev: rec {
+    unstable-packages = final: _prev: {
       unstable = import inputs.nixpkgs-unstable {
         inherit (final.stdenv.hostPlatform) system;
         # TODO: Find solution as I cannot customize nixpkgs in home-manager as:
         # useGlobalPackages = true
-        config.allowUnfreePredicate =
-          pkg:
-          builtins.elem (lib.getName pkg) [
-            "vscode"
-            "copilot-language-server" # FIXME: Temporary
-          ];
+        config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "vscode" ];
       };
-      inherit (unstable) lazygit;
-      inherit (unstable) vscode;
+    };
+
+    modifications = final: prev: {
+      inherit ((unstable-packages final prev).unstable) lazygit;
+      inherit ((unstable-packages final prev).unstable) vscode;
     };
 
     additions = final: _prev: {
