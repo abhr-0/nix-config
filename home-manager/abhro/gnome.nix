@@ -1,11 +1,4 @@
-{
-  self,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-
+{ pkgs, ... }:
 {
   # GNOME Configuration
   programs.gnome-shell = {
@@ -73,15 +66,10 @@
       };
 
       # Wallpaper
-      "org/gnome/desktop/background" =
-        let
-          wallpaperPath = self + "/home-manager/${config.home.username}/wallpaper.png";
-          wallpaperExists = builtins.pathExists wallpaperPath;
-        in
-        lib.mkIf wallpaperExists {
-          picture-uri = "file://${wallpaperPath}";
-          picture-uri-dark = "file://${wallpaperPath}";
-        };
+      # "org/gnome/desktop/background" = rec {
+      #   picture-uri = "file://${./home-manager/${config.home.username}/wallpaper.png}";
+      #   picture-uri-dark = picture-uri;
+      # };
     };
   };
 
