@@ -12,7 +12,6 @@
   environment = {
     # Remove GNOME's unneeded packages
     gnome.excludePackages = with pkgs; [
-      geary
       yelp
       gnome-software
       gnome-tour
