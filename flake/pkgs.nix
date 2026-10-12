@@ -6,7 +6,7 @@
       config,
       pkgs,
       system,
-      ...
+      ... # final for overlay
     }:
     {
       # NOTE: Look into ./nixvim.nix as nixvim likes to manage its own pkgs.

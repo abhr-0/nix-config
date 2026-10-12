@@ -19,6 +19,7 @@
         with pkgs;
         [
           nixd
+          nurl
           nix-init
           age
           ssh-to-age
