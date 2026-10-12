@@ -19,6 +19,7 @@
         };
 
         inherit (unstablePkgs) lazygit;
+        inherit (unstablePkgs) yazi;
         inherit (unstablePkgs) vscode;
 
         localPkgs = config.packages;
