@@ -32,21 +32,11 @@
         };
       };
       keymaps = [
-        {
-          key = "gd"; # or <C-]> look `:h lsp-defaults`
-          lspBufAction = "definition";
-          options.desc = "Go to definition";
-        }
-        {
-          key = "gD";
-          lspBufAction = "declaration";
-          options.desc = "Go to declaration";
-        }
-        {
-          action = "<CMD>lsp restart<Enter>";
-          key = "<leader>l";
-          options.desc = "Restart LSP";
-        }
+        /*nixfmt:disable*/
+        { key = "gd"; lspBufAction = "definition"; options.desc = "Go to definition"; } # or <C-]> look `:h lsp-defaults`
+        { key = "gD"; lspBufAction = "declaration"; options.desc = "Go to declaration"; }
+        { action = "<CMD>lsp restart<Enter>"; key = "<leader>l"; options.desc = "Restart LSP"; }
+        /*nixfmt:enable*/
       ];
       luaConfig.post = ''
         local severity = vim.diagnostic.severity

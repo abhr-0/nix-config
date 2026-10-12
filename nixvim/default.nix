@@ -71,58 +71,19 @@
     autoGroups."kickstart-highlight-yank".clear = true;
 
     keymaps = [
-      {
-        mode = "n";
-        # The <Esc> is added for flash.nvim not being able to clear highlights
-        # when using `f`, `F`, `t` and `T` motions
-        action = "<CMD>nohlsearch<CR><Esc>";
-        key = "<Esc>";
-        options.desc = "Clear search highlights";
-      }
-      {
-        mode = "i";
-        action = "<Esc>";
-        key = "jk";
-        options.desc = "Clear search highlights";
-      }
-      {
-        mode = "n";
-        action = "<C-w>h";
-        key = "<C-h>";
-        options.desc = "Switch to left split";
-      }
-      {
-        mode = "n";
-        action = "<C-w>j";
-        key = "<C-j>";
-        options.desc = "Switch to bottom split";
-      }
-      {
-        mode = "n";
-        action = "<C-w>k";
-        key = "<C-k>";
-        options.desc = "Switch to top split";
-      }
-      {
-        mode = "n";
-        action = "<C-w>l";
-        key = "<C-l>";
-        options.desc = "Switch to right split";
-      }
+      /*nixfmt:disable*/
+      # The <Esc> is added for flash.nvim not being able to clear highlights when using `f`, `F`, `t` and `T` motions
+      { mode = "n"; action = "<CMD>nohlsearch<CR><Esc>"; key = "<Esc>"; options.desc = "Clear search highlights"; }
+      { mode = "i"; action = "<Esc>"; key = "jk"; options.desc = "Clear search highlights"; }
+      { mode = "n"; action = "<C-w>h"; key = "<C-h>"; options.desc = "Switch to left split"; }
+      { mode = "n"; action = "<C-w>j"; key = "<C-j>"; options.desc = "Switch to bottom split"; }
+      { mode = "n"; action = "<C-w>k"; key = "<C-k>"; options.desc = "Switch to top split"; }
+      { mode = "n"; action = "<C-w>l"; key = "<C-l>"; options.desc = "Switch to right split"; }
 
       # Better indenting in visual mode
-      {
-        mode = "v";
-        action = "<gv";
-        key = "<";
-        options.desc = "Left Indent";
-      }
-      {
-        mode = "v";
-        action = ">gv";
-        key = ">";
-        options.desc = "Right Indent";
-      }
+      { mode = "v"; action = "<gv"; key = "<"; options.desc = "Left Indent"; }
+      { mode = "v"; action = ">gv"; key = ">"; options.desc = "Right Indent"; }
+      /*nixfmt:enable*/
     ];
   };
 }
