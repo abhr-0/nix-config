@@ -17,8 +17,8 @@
 
     fzf = rec {
       enable = true;
-      changeDirWidgetCommand = /* bash */ "${pkgs.fd}/bin/fd --type d --hidden --strip-cwd-prefix --exclude .git";
-      defaultCommand = /* bash */ "${pkgs.fd}/bin/fd --hidden --strip-cwd-prefix --exclude .git";
+      changeDirWidgetCommand = /* bash */ "${lib.getExe pkgs.fd} --type d --hidden --strip-cwd-prefix --exclude .git";
+      defaultCommand = /* bash */ "${lib.getExe pkgs.fd} --hidden --strip-cwd-prefix --exclude .git";
       fileWidgetCommand = defaultCommand;
     };
 

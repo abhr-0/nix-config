@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs = {
     lazygit.enable = true;
@@ -40,14 +40,14 @@
           algorithm = "histogram";
           indentHeuristic = true;
         };
-        core.pager = "${pkgs.delta}/bin/delta";
+        core.pager = lib.getExe pkgs.delta;
         delta = {
           line-number = true;
           side-by-side = true;
           navigate = true;
         };
         interactive = {
-          diffFilter = "${pkgs.delta}/bin/delta --color-only";
+          diffFilter = "${lib.getExe pkgs.delta} --color-only";
           singlekey = true;
         };
 
