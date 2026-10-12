@@ -5,12 +5,13 @@ This repo contains my NixOS (+ home-manager) configuration.
 > Reminder to self: Make sure to read 'manual-setup.md' to setup the non-nixified things
 
 # Hosts
+
 This configuration is cuurently used by the following hosts:
 
-| Hostname | Type    | Description                   |
-| -------- | ------- | ----------------------------- |
-| `earth`  | Laptop  | Primary Device                |
-| `pluto`  | Desktop | Old system, used occationally |
+| Hostname | Type       | Description                   |
+| -------- | ---------- | ----------------------------- |
+| `earth`  | 💻 Laptop  | Primary Device                |
+| `pluto`  | 🖥 Desktop | Old system, used occationally |
 
 # Directory structure
 
