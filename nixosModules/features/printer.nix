@@ -8,12 +8,10 @@
   options.systemSettings.printer.enable = lib.mkEnableOption "Enable printer and scanner support";
 
   config = lib.mkIf config.systemSettings.printer.enable {
-    nixpkgs.config.allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "hplip"
-        "hplipWithPlugin"
-      ];
+    nixpkgs.config.allowUnfreePackages = [
+      "hplip"
+      "hplipWithPlugin"
+    ];
 
     services.printing = {
       enable = true;

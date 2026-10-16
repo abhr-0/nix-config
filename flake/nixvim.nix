@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   perSystem =
     { config, system, ... }:
@@ -16,7 +16,7 @@
           {
             nixpkgs = {
               overlays = [ nixvim-overlay ];
-              config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "copilot-language-server" ]; # FIXME: nixvim
+              config.allowUnfreePackages = [ "copilot-language-server" ]; # FIXME: nixvim
             };
           }
         ];
