@@ -1,5 +1,5 @@
 # Not used in current setup
-{ config }: {
+{ config, ... }: {
   # Use imports instead when using home-manager as standalone
   # imports = [ inputs.sops-nix.homeManagerModules.sops ];
 

@@ -14,8 +14,7 @@
       "lanzaboote"
       "none"
     ];
-    default = null; # set to null to force explicit choice
-    description = "Bootloader configuration";
+    description = "Bootloader configuration"; # default not set to force explicit choice
   };
 
   config = lib.mkMerge [

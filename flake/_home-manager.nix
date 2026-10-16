@@ -13,7 +13,7 @@
       pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux"; # Home-manager requires 'pkgs' instance
       extraSpecialArgs = { inherit inputs; };
       # > Our main home-manager configuration file <
-      modules = [ ../../home-manager/abhro/home.nix ];
+      modules = [ ../home-manager/abhro/home.nix ];
     };
   };
 }

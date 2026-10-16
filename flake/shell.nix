@@ -32,5 +32,7 @@
         ${config.pre-commit.shellHook}
       '';
     };
+
+    formatter = pkgs.nixfmt;
   };
 }
