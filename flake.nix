@@ -21,6 +21,7 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pre-commit.follows = "git-hooks-nix";
     };
 
     git-hooks-nix = {
@@ -37,7 +38,10 @@
 
     import-tree.url = "github:vic/import-tree";
 
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs =
