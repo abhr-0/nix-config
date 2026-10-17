@@ -1,7 +1,46 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, ... }:
 {
   programs = {
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+
+      settings = {
+        git.diffRenderers = [
+          { command = "delta --{{colorScheme}} --paging=never"; }
+          {
+            type = "extDiff";
+            command = "difft --color=always --background={{colorScheme}} --context={{diffContext}}";
+          }
+        ];
+      };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        line-number = true;
+        side-by-side = true; # Can get annoying
+        syntax-theme = config.programs.bat.config.theme;
+      };
+    };
+
+    bat = {
+      enable = true;
+      themes.kanagawa = {
+        src = pkgs.vimPlugins.kanagawa-nvim;
+        file = "extras/tmTheme/kanagawa.tmTheme";
+      };
+      config.theme = "kanagawa";
+    };
+
+    difftastic = {
+      enable = true;
+      # git = {
+      #   enable = true;
+      #   mode = "difftool"; # As I want delta to be used by default # TODO: Uncomment in next release
+      # };
+    };
 
     git = {
       enable = true;
@@ -32,34 +71,9 @@
           "git@github.com:".insteadOf = "github:"; # Mimic nix3 commands
         };
 
-        # Prompt commands on typo
         help.autocorrect = "prompt";
-
-        # Diff
-        diff = {
-          algorithm = "histogram";
-          indentHeuristic = true;
-        };
-        core.pager = lib.getExe pkgs.delta;
-        delta = {
-          line-number = true;
-          side-by-side = true;
-          navigate = true;
-        };
-        interactive = {
-          diffFilter = "${lib.getExe pkgs.delta} --color-only";
-          singlekey = true;
-        };
-
-        # Log
-        log.graph = true;
-
-        # Status
-        status = {
-          branch = true;
-          showStash = true;
-          showUntrackedFiles = "all";
-        };
+        diff.algorithm = "histogram";
+        status.short = true;
       };
     };
   };
