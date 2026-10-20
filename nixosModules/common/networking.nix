@@ -16,19 +16,19 @@
     # Block malicious hosts
     stevenblack.enable = true;
 
-    # DNS Nameservers
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "8.8.8.8"
-    ];
+    # Set in resolved config below
+    # nameservers = [ ];
   };
 
-  # systemd-resolvd config
-  # Look: https://nixos.wiki/wiki/Encrypted_DNS#Setting_nameservers
+  # NOTE: FallbackDNS isn't set, a default compiled-in list is used automatically
+  # Check `resolvectl status` to get the list
   services.resolved = {
     enable = true;
     settings.Resolve = {
+      DNS = [
+        "1.1.1.1#one.one.one.one"
+        "1.0.0.1#one.one.one.one"
+      ];
       Domains = [ "~." ];
       DNSOverTLS = "true";
       DNSSEC = "true";
