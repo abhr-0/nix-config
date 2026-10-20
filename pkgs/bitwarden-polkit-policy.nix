@@ -1,27 +1,26 @@
 # NOTE: Needed as bitwarden-destop in not installed as a system package
 # Read: https://bitwarden.com/help/biometrics/#set-up-biometrics-for-desktop-app
-{ runCommand, bitwarden-desktop }:
-# {writeTextFile, bitwarden-desktop}:
+# Source of text: https://github.com/bitwarden/clients/blob/main/apps/desktop/resources/com.bitwarden.desktop.policy
+{ writeTextFile }:
+writeTextFile {
+  name = "bitwarden-polkit-policy";
+  destination = "/share/polkit-1/actions/com.bitwarden.Bitwarden.policy";
+  text = ''
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE policyconfig PUBLIC
+     "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+     "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 
-# (pkgs.writeTextFile rec {
-#   name = "bitwarden-polkit-policy";
-#   destination = "/share/polkit-1/actions/com.bitwarden.Bitwarden.policy";
-#   text = builtins.readFile ("${pkgs.bitwarden-desktop}" + "${destination}");
-# })
-
-# FIXME: Consider downloading from the direct github repo
-runCommand "bitwarden-polkit-policy" { } ''
-  mkdir -p $out/share/polkit-1/actions
-  cp ${bitwarden-desktop}/share/polkit-1/actions/com.bitwarden.Bitwarden.policy $out/share/polkit-1/actions/
-''
-
-# final.runCommand "bitwarden-polkit-policy" { } ''
-#   mkdir -p $out/share/polkit-1/actions
-#   cp ${final.bitwarden-desktop.src}/apps/desktop/resources/com.bitwarden.desktop.policy $out/share/polkit-1/actions/com.bitwarden.Bitwarden.policy
-# '';
-
-# final.writeTextFile {
-#   name = "bitwarden-polkit-policy";
-#   destination = "/share/polkit-1/actions/com.bitwarden.Bitwarden.policy";
-#   text = builtins.readFile "${final.bitwarden-desktop.src}/apps/desktop/resources/com.bitwarden.desktop.policy";
-# })
+    <policyconfig>
+      <action id="com.bitwarden.Bitwarden.unlock">
+        <description>Unlock Bitwarden</description>
+        <message>Authenticating to unlock Bitwarden</message>
+        <defaults>
+          <allow_any>auth_self</allow_any>
+          <allow_inactive>auth_self</allow_inactive>
+          <allow_active>auth_self</allow_active>
+        </defaults>
+      </action>
+    </policyconfig>
+  '';
+}
