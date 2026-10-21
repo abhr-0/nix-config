@@ -11,6 +11,7 @@
     {
       # NOTE: Look into ./nixvim.nix as nixvim likes to manage its own pkgs.
 
+      # https://wiki.nixos.org/wiki/Overlays
       overlayAttrs = rec {
         unstablePkgs = import inputs.nixpkgs-unstable {
           inherit system;
