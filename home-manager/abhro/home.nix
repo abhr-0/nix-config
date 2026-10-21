@@ -48,7 +48,6 @@
 
       # Various Tools
       localPkgs.neovim # Neovim with custom config
-      ollama # LLM runtime
       nixd # Nix LSP Server
       nixfmt # Nix Formatter
       # vulnix
@@ -81,6 +80,13 @@
     };
 
     vscode.enable = hostName == "earth";
+
+  };
+
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-vulkan;
+    environmentVariables.OLLAMA_IGPU_ENABLE = "1";
   };
 
   # WARN: Keep this to load fonts when if no fonts seem to be added in config
