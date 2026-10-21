@@ -26,7 +26,7 @@
             id = "JioFiber-5G";
             interface-name = "wlp3s0";
             type = "wifi";
-            zone = "home";
+            zone = "nixos-fw-default";
           };
           ipv4 = {
             method = "auto";
