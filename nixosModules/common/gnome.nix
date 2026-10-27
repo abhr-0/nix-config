@@ -4,19 +4,15 @@
   services = {
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-
-    # Set GNOME as the default session
-    displayManager.defaultSession = "gnome";
   };
 
   environment = {
-    # Remove GNOME's unneeded packages
     gnome.excludePackages = with pkgs; [
       yelp
-      gnome-software
       gnome-tour
       epiphany
     ];
+
     systemPackages = [
       pkgs.bibata-cursors
     ] # For Bibata Cursor in GDM
