@@ -34,6 +34,7 @@
         "code.desktop"
         "md.obsidian.Obsidian.desktop"
         "org.gnome.Nautilus.desktop"
+        "org.gnome.Software.desktop"
       ];
 
       # Custom keyboard shortcut
