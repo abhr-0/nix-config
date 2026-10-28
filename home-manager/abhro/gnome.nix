@@ -11,6 +11,8 @@
         appindicator
         clipboard-indicator
         dash-to-dock
+        blur-my-shell
+        gsconnect
       ]
     );
   };
@@ -28,7 +30,7 @@
       # Pin apps to Dash/Dock
       "org/gnome/shell".favorite-apps = [
         "firefox.desktop"
-        "org.gnome.Console.desktop"
+        "com.mitchellh.ghostty.desktop"
         "code.desktop"
         "md.obsidian.Obsidian.desktop"
         "org.gnome.Nautilus.desktop"
@@ -40,8 +42,8 @@
       ];
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        name = "Launch Console";
-        command = "kgx";
+        name = "Launch Ghostty";
+        command = "ghostty +new-window";
         binding = "<Super>t";
       };
 

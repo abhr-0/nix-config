@@ -81,6 +81,13 @@
 
     vscode.enable = hostName == "earth";
 
+    ghostty = {
+      enable = true;
+      settings = {
+        theme = "Kanagawa Wave";
+        maximize = true;
+      };
+    };
   };
 
   services.ollama = {

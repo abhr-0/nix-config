@@ -14,8 +14,9 @@
     ];
 
     systemPackages = [
-      pkgs.bibata-cursors
-    ] # For Bibata Cursor in GDM
+      pkgs.bibata-cursors # For Bibata Cursor in GDM
+      pkgs.nautilus-python # WARN: Needed for integration with gsconnect and ghostty
+    ]
     ++ (with pkgs.gst_all_1; [
       # GStreamer
       gstreamer
