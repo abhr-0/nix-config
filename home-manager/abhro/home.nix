@@ -90,12 +90,6 @@
     };
   };
 
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-vulkan;
-    environmentVariables.OLLAMA_IGPU_ENABLE = "1";
-  };
-
   # WARN: Keep this to load fonts when if no fonts seem to be added in config
   # Read: https://wiki.nixos.org/wiki/Fonts#Let_Fontconfig_know_the_fonts_within_your_Nix_profile
   fonts.fontconfig.enable = true;
