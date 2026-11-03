@@ -25,6 +25,8 @@
       relativenumber = true;
       cursorline = true;
 
+      colorcolumn = lib.mkDefault [ "100" ];
+
       tabstop = 2;
       softtabstop = 2;
       shiftwidth = 2;
@@ -55,7 +57,7 @@
 
       mouse = "a";
 
-      foldlevelstart = 99;
+      foldlevelstart = 99; # Start with all folds open
     };
 
     globals.mapleader = " ";

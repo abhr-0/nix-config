@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{
   config = {
     # For sane LSP defaults
     plugins.lspconfig.enable = true;
@@ -11,24 +11,31 @@
         ruff.enable = true;
         nixd = {
           enable = true;
-          config.settings.nixd =
-            let
-              flake_path = "(builtins.getFlake (builtins.toString ./.))";
-            in
-            {
-              nixpkgs.expr = "import ${flake_path}.inputs.nixpkgs { } ";
-              formatting = { };
-              options = {
-                nixos.expr = "${flake_path}.nixosConfigurations.earth.options";
-                home_manager.expr = "${flake_path}.nixosConfigurations.earth.options.home-manager.users.type.getSubOptions []";
+          config.settings.nixd = {
+            nixpkgs.expr = "import <nixpkgs> { } ";
+            options =
+              let
+                flake_path = "(builtins.getFlake (builtins.toString ./.))";
+              in
+              {
+                nixos.expr = "${flake_path}.nixosConfigurations.earth.options"; # FIXME: Get hostname? using either getEnv or readFile
+
+                # For HM as NixOS module
+                home-manager.expr = "${flake_path}.nixosConfigurations.earth.options.home-manager.users.type.getSubOptions []";
+
+                # For standalone HM:
+                # home_manager.expr = "${flake_path}.homeConfigurations.<name>.options"
 
                 # Need to enable `debug` option in flake-parts for this
-                flake-parts.expr = "${flake_path}.debug.options";
-                flake-parts-sys.expr = "${flake_path}.currentSystem.options";
+                # flake-parts.expr = "${flake_path}.debug.options";
+                # flake-parts-sys.expr = "${flake_path}.currentSystem.options";
 
-                nixvim.expr = "${flake_path}.packages.${pkgs.stdenv.hostPlatform.system}.neovim.options"; # NOTE: `stdenv.hostPlatform.system` is used to automatically set the correct system.
+                # NOTE: `builtins.currentSystem` is evaluated by nixd.
+                # `pkgs.stdend.hostPlatform.system` is not needed here as nixd
+                # can just use the "system" it's running on
+                nixvim.expr = "${flake_path}.packages.\${builtins.currentSystem}.neovim.options";
               };
-            };
+          };
         };
       };
       keymaps = [

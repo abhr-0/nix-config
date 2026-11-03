@@ -6,6 +6,6 @@
         "ftplugin/${lang}.lua" = { inherit localOpts; };
       })
       {
-        nix.colorcolumn = [ "80" ];
+        python.colorcolumn = lib.mkForce [ "88" ];
       };
 }
