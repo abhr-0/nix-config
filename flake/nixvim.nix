@@ -15,6 +15,7 @@
           (inputs.import-tree ../nixvim)
           {
             nixpkgs = {
+              source = inputs.nixpkgs-unstable; # WARN: Can cause issues, try disabling if nixvim fails to build (Also set in flake.nix)
               overlays = [ nixvim-overlay ];
               config.allowUnfreePackages = [ "copilot-language-server" ]; # FIXME: nixvim
             };

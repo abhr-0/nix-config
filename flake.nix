@@ -40,6 +40,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable"; # WARN: Can cause issues, try disabling if nixvim fails to build (Also set in flake/nixvim.nix)
       inputs.flake-parts.follows = "flake-parts";
     };
   };
