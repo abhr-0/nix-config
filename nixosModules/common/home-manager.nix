@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -9,7 +9,7 @@
       # Use sharedModules instead of imports when using home-manager as a NixOS module
       # inputs.sops-nix.homeManagerModules.sops
     ];
-    extraSpecialArgs = { inherit inputs self; };
+    extraSpecialArgs = { inherit inputs; };
     users.abhro = inputs.import-tree ../../home-manager/abhro;
   };
 }

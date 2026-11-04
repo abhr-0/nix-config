@@ -1,9 +1,4 @@
-{
-  self,
-  inputs,
-  lib,
-  ...
-}:
+{ inputs, lib, ... }:
 {
   flake =
     let
@@ -13,13 +8,13 @@
       mkNixOS =
         { hostName }:
         inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs; };
           # > Our main nixos configuration file <
           modules = [
             ../hosts/${hostName}/configuration.nix
             (inputs.import-tree ../nixosModules)
             {
-              nixpkgs.overlays = [ self.overlays.default ];
+              nixpkgs.overlays = [ inputs.self.overlays.default ];
               sops.secrets.usbguard_rules_file.sopsFile = ../secrets/${hostName}.yaml;
               networking = { inherit hostName; };
             }
