@@ -13,12 +13,16 @@
       mkNixOS =
         { hostName }:
         inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs hostName self; };
+          specialArgs = { inherit inputs self; };
           # > Our main nixos configuration file <
           modules = [
             ../hosts/${hostName}/configuration.nix
             (inputs.import-tree ../nixosModules)
-            { nixpkgs.overlays = [ self.overlays.default ]; }
+            {
+              nixpkgs.overlays = [ self.overlays.default ];
+              sops.secrets.usbguard_rules_file.sopsFile = ../secrets/${hostName}.yaml;
+              networking = { inherit hostName; };
+            }
           ];
         };
     in

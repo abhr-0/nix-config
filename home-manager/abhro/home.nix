@@ -2,7 +2,6 @@
   config,
   inputs,
   pkgs,
-  hostName,
   ...
 }:
 {
@@ -78,8 +77,6 @@
       enable = true;
       nix-direnv.enable = true;
     };
-
-    vscode.enable = hostName == "earth";
 
     ghostty = {
       enable = true;

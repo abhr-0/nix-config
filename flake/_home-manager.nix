@@ -1,7 +1,4 @@
-# Not used in current setup, but can be used for standalone home-manager
-# configuration in the future.
-# Note: should create separate configurations for each host and pass `hostName`
-# in extraSpecialArgs
+# NOTE: Not used in current config, but can be used for standalone home-manager in the future.
 { inputs, ... }:
 {
   imports = [ inputs.home-manager.flakeModules.home-manager ];

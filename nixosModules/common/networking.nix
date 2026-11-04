@@ -1,9 +1,5 @@
-{ hostName, ... }:
 {
   networking = {
-    # Sets the host name
-    inherit hostName;
-
     # MAC Address randomisation
     networkmanager = {
       ethernet.macAddress = "stable"; # Also available: `random` and default is `preserve`

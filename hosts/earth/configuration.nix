@@ -8,6 +8,8 @@
     fileSystems = [ "/" ];
   };
 
+  home-manager.users.abhro.programs.vscode.enable = true;
+
   systemSettings = {
     podman.enable = true;
     virt-manager.enable = true;
@@ -16,6 +18,7 @@
     fprint.enable = true;
     plymouth.enable = true;
     bootloader = "lanzaboote";
+    usbguard.enable = true;
   };
 
   time.timeZone = "Asia/Kolkata";

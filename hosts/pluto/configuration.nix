@@ -6,6 +6,7 @@
     printer.enable = true;
     bootloader = "grub";
     plymouth.enable = true;
+    usbguard.enable = true;
   };
 
   time.timeZone = "Asia/Kolkata";
