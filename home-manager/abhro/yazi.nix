@@ -2,8 +2,6 @@
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
-    # flavors.kanagawa = pkgs.localPkgs.yazi-flavor-kanagawa;
-    # theme.flavor.dark = "kanagawa";
     plugins = {
       full-border = {
         package = pkgs.yaziPlugins.full-border;
