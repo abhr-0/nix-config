@@ -15,11 +15,12 @@
     firewalld.enable = true;
     fprint.enable = true;
     homeWifi.enable = true;
+    openssh.enable = false;
     plymouth.enable = true;
     podman.enable = true;
     printer.enable = false;
     usbguard.enable = true;
-    virt-manager.enable = true;
+    virt-manager.enable = false;
   };
 
   time.timeZone = "Asia/Kolkata";

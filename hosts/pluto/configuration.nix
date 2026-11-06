@@ -7,6 +7,7 @@
     firewalld.enable = false;
     fprint.enable = false;
     homeWifi.enable = false;
+    openssh.enable = false;
     plymouth.enable = true;
     podman.enable = false;
     printer.enable = true;
