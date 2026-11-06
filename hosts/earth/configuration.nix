@@ -11,14 +11,15 @@
   home-manager.users.abhro.programs.vscode.enable = true;
 
   systemSettings = {
-    podman.enable = true;
-    virt-manager.enable = true;
-    firewalld.enable = true;
-    homeWifi.enable = true;
-    fprint.enable = true;
-    plymouth.enable = true;
     bootloader = "lanzaboote";
+    firewalld.enable = true;
+    fprint.enable = true;
+    homeWifi.enable = true;
+    plymouth.enable = true;
+    podman.enable = true;
+    printer.enable = false;
     usbguard.enable = true;
+    virt-manager.enable = true;
   };
 
   time.timeZone = "Asia/Kolkata";

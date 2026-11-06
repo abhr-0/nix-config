@@ -3,10 +3,15 @@
   imports = [ ./hardware-configuration.nix ];
 
   systemSettings = {
-    printer.enable = true;
     bootloader = "grub";
+    firewalld.enable = false;
+    fprint.enable = false;
+    homeWifi.enable = false;
     plymouth.enable = true;
+    podman.enable = false;
+    printer.enable = true;
     usbguard.enable = true;
+    virt-manager.enable = false;
   };
 
   time.timeZone = "Asia/Kolkata";
