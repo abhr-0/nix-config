@@ -31,8 +31,13 @@
       softtabstop = 2;
       shiftwidth = 2;
       expandtab = true;
+
+      autoindent = true;
+      breakindent = true;
       smartindent = true;
-      breakindent = true; # ?
+
+      shiftround = true;
+      linebreak = true;
 
       showmode = false;
 
