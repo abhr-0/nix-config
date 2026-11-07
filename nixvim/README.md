@@ -1,7 +1,7 @@
 This document holds various things:
 
 # Language specific configuration
-Only `lang.nix`, `lsp.nix` and `format.nix` contain language specific configs
+Only `langs/` contains language/framework/filetype specific configs
 
 # Useful commands/keymaps:
 - increment: `<C-a>`
