@@ -10,10 +10,11 @@
       let
         gitsigns = "require('gitsigns')";
       in
+      with lib.nixvim;
       [
         {
           mode = "n";
-          action = lib.nixvim.mkRaw ''
+          action = mkRaw ''
             function()
               if vim.wo.diff then
                 vim.cmd.normal({']c'})
@@ -27,7 +28,7 @@
         }
         {
           mode = "n";
-          action = lib.nixvim.mkRaw ''
+          action = mkRaw ''
             function()
               if vim.wo.diff then
                 vim.cmd.normal({'[c'})
@@ -41,43 +42,43 @@
         }
         {
           mode = "n";
-          action = lib.nixvim.mkRaw "${gitsigns}.stage_hunk";
+          action = mkRaw "${gitsigns}.stage_hunk";
           key = "<leader>hs";
           options.desc = "Stage Hunk";
         }
         {
           mode = "n";
-          action = lib.nixvim.mkRaw "${gitsigns}.reset_hunk";
+          action = mkRaw "${gitsigns}.reset_hunk";
           key = "<leader>hr";
           options.desc = "Reset Hunk";
         }
         {
           mode = "v";
-          action = lib.nixvim.mkRaw "function() ${gitsigns}.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end";
+          action = mkRaw "function() ${gitsigns}.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end";
           key = "<leader>hs";
           options.desc = "Stage Hunk Selected";
         }
         {
           mode = "v";
-          action = lib.nixvim.mkRaw "function() ${gitsigns}.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end";
+          action = mkRaw "function() ${gitsigns}.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end";
           key = "<leader>hr";
           options.desc = "Reset Hunk Selected";
         }
         {
           mode = "n";
-          action = lib.nixvim.mkRaw "${gitsigns}.preview_hunk";
+          action = mkRaw "${gitsigns}.preview_hunk";
           key = "<leader>hp";
           options.desc = "Preview Hunk"; # Use inline?
         }
         {
           mode = "n";
-          action = lib.nixvim.mkRaw "function() ${gitsigns}.blame_line({ full = true }) end"; # Full needed?
+          action = mkRaw "function() ${gitsigns}.blame_line({ full = true }) end"; # Full needed?
           key = "<leader>hb";
           options.desc = "Blame Line";
         }
         {
           mode = "n";
-          action = lib.nixvim.mkRaw ''
+          action = mkRaw ''
             function()
               if vim.wo.diff then
                 vim.cmd("only")

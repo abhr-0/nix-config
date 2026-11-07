@@ -32,58 +32,58 @@
     };
   };
 
-  keymaps = [
+  keymaps = with lib.nixvim; [
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.explorer() end";
+      action = mkRaw "function() Snacks.explorer() end";
       key = "<leader>e";
       options.desc = "Open File Explorer";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.smart() end";
+      action = mkRaw "function() Snacks.picker.smart() end";
       key = "<leader>f";
       options.desc = "Find Files (Smart)";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.buffers() end";
+      action = mkRaw "function() Snacks.picker.buffers() end";
       key = "<leader>b";
       options.desc = "Find Buffers";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.grep() end";
+      action = mkRaw "function() Snacks.picker.grep() end";
       key = "<leader>/";
       options.desc = "Grep";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.help() end";
+      action = mkRaw "function() Snacks.picker.help() end";
       key = "<leader>?";
       options.desc = "Find Help";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.keymaps() end";
+      action = mkRaw "function() Snacks.picker.keymaps() end";
       key = "<leader>sk";
       options.desc = "Find Keymaps";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.diagnostics() end";
+      action = mkRaw "function() Snacks.picker.diagnostics() end";
       key = "<leader>d";
       options.desc = "Find Diagnostics";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_config() end";
+      action = mkRaw "function() Snacks.picker.lsp_config() end";
       key = "<leader>sl";
       options.desc = "Find LSP Servers";
     }
     (lib.mkIf config.plugins.todo-comments.enable {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.picker.todo_comments() end";
+      action = mkRaw "function() Snacks.picker.todo_comments() end";
       key = "<leader>st";
       options.desc = "Find TODOs";
     })
@@ -92,7 +92,7 @@
         "n"
         "t"
       ];
-      action = lib.nixvim.mkRaw "function() Snacks.terminal.toggle() end";
+      action = mkRaw "function() Snacks.terminal.toggle() end";
       key = "<C-\\>";
       options.desc = "Toggle terminal";
     }
@@ -101,19 +101,19 @@
         "n"
         "t"
       ];
-      action = lib.nixvim.mkRaw "function() Snacks.terminal.toggle() end";
+      action = mkRaw "function() Snacks.terminal.toggle() end";
       key = "<C-_>";
       options.desc = "which_key_ignore";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.notifier.show_history() end";
+      action = mkRaw "function() Snacks.notifier.show_history() end";
       key = "<leader>n";
       options.desc = "Show Notification History";
     }
     {
       mode = "n";
-      action = lib.nixvim.mkRaw "function() Snacks.notifier.undo() end";
+      action = mkRaw "function() Snacks.notifier.undo() end";
       key = "<leader>u";
       options.desc = "Show Undo History";
     }

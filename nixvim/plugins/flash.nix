@@ -3,16 +3,16 @@
   config = {
     plugins.flash.enable = true;
 
-    keymaps = [
+    keymaps = with lib.nixvim; [
       /*nixfmt:disable*/
       { mode = [ "n" "x" "o" ];
         key = "s";
-        action = lib.nixvim.mkRaw "function() require(\"flash\").jump() end";
+        action = mkRaw "function() require(\"flash\").jump() end";
         options.desc = "Flash";
       }
       { mode = [ "n" "x" "o" ];
         key = "S";
-        action = lib.nixvim.mkRaw "function() require(\"flash\").treesitter() end";
+        action = mkRaw "function() require(\"flash\").treesitter() end";
         options.desc = "Flash Treesitter";
       }
       # TODO: more
