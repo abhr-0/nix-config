@@ -75,15 +75,4 @@
       # };
     };
   };
-
-  # Set cursor to "Bibata Modern Classic"
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 24;
-    x11.enable = true;
-    gtk.enable = true;
-  };
-
-  gtk.enable = true; # Required by home.pointerCursor.gtk.enable = true to work correctly
 }

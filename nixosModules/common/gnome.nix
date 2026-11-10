@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   # Enable the GNOME Desktop Environment.
   services = {
@@ -12,9 +12,7 @@
       gnome-tour
       epiphany
     ];
-
     systemPackages = [
-      pkgs.bibata-cursors # For Bibata Cursor in GDM
       pkgs.nautilus-python # WARN: Needed for integration with gsconnect and ghostty
     ]
     ++ (with pkgs.gst_all_1; [
@@ -33,18 +31,4 @@
     sessionVariables."GST_PLUGIN_PATH" = "/run/current-system/sw/lib/gstreamer-1.0/";
   };
 
-  # Set cursor to 'Bibata Modern Classic' in GDM
-  programs.dconf = {
-    enable = true;
-
-    profiles.gdm.databases = [
-      {
-        lockAll = true;
-        settings."org/gnome/desktop/interface" = {
-          cursor-theme = "Bibata-Modern-Classic"; # Needs bibata-cursors installed
-          cursor-size = lib.gvariant.mkInt32 24;
-        };
-      }
-    ];
-  };
 }
