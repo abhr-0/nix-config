@@ -1,5 +1,5 @@
 {
-  config.plugins.copilot-lua = {
+  plugins.copilot-lua = {
     enable = true;
     settings = {
       panel.enabled = false;

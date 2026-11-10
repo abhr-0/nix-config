@@ -1,9 +1,8 @@
 { lib, ... }:
 {
-  config = {
-    plugins.flash.enable = true;
+  plugins.flash.enable = true;
 
-    keymaps = with lib.nixvim; [
+  keymaps = with lib.nixvim; [
       /*nixfmt:disable*/
       { mode = [ "n" "x" "o" ];
         key = "s";
@@ -17,6 +16,5 @@
       }
       # TODO: more
       /*nixfmt:enable*/
-    ];
-  };
+  ];
 }
