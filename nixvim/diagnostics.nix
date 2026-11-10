@@ -21,7 +21,7 @@
       '';
 
       virtual_text = {
-        # current_line = true;
+        current_line = false;
         spacing = 2;
         source = "if_many";
         prefix = "●";
@@ -29,5 +29,33 @@
 
       severity_sort = true;
     };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>ud";
+        action = lib.nixvim.mkRaw ''
+          function()
+            local current = vim.diagnostic.config().virtual_text
+            local enabled = type(current) == "table" and current.current_line
+
+            vim.notify(
+              "Virtual text is now " ..
+              (enabled and "enabled for the current line" or "enabled for the entire buffer")
+            )
+
+            vim.diagnostic.config({
+              virtual_text = {
+                current_line = not enabled,
+                spacing = 2,
+                source = "if_many",
+                prefix = "●"
+              },
+            })
+          end
+        '';
+        options.desc = "Toggle virtual text for current line or entire buffer";
+      }
+    ];
   };
 }

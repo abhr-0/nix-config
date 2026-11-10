@@ -41,7 +41,7 @@
     }
     {
       mode = "n";
-      action = mkRaw "function() Snacks.picker.smart() end";
+      action = mkRaw "function() Snacks.picker.smart({filter = {cwd = true}}) end";
       key = "<leader>f";
       options.desc = "Find Files (Smart)";
     }
@@ -113,8 +113,8 @@
     }
     {
       mode = "n";
-      action = mkRaw "function() Snacks.notifier.undo() end";
-      key = "<leader>u";
+      action = mkRaw "function() Snacks.picker.undo() end";
+      key = "<leader>U";
       options.desc = "Show Undo History";
     }
   ];

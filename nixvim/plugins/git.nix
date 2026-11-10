@@ -98,7 +98,7 @@
         {
           mode = "n";
           key = "<leader>g";
-          action = "<CMD>LazyGit<CR>";
+          action = lib.nixvim.mkRaw "function() Snacks.lazygit() end";
           options.desc = "Open LazyGit";
         }
       ];
