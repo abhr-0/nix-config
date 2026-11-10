@@ -10,7 +10,6 @@
     zenbones-nvim
     lush-nvim
   ];
-  plugins.yazi.enable = true;
 
   clipboard = {
     register = "unnamedplus";
@@ -89,8 +88,6 @@
     # Better indenting in visual mode
     { mode = "v"; action = "<gv"; key = "<"; options.desc = "Left Indent"; }
     { mode = "v"; action = ">gv"; key = ">"; options.desc = "Right Indent"; }
-
-    {mode = "n"; action = "<CMD>Yazi<CR>"; key = "<leader>y"; options.desc = "Toggle Yazi File Manager"; }
     /*nixfmt:enable*/
   ];
 }
