@@ -1,8 +1,7 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
 format = """
-$username\
-$hostname\
+($username@$hostname )\
 $directory\
 $git_branch\
 $git_commit\
@@ -10,7 +9,6 @@ $git_state\
 $git_status\
 $docker_context\
 $nix_shell\
-$direnv\
 $cmd_duration\
 $line_break\
 $jobs\
@@ -22,18 +20,8 @@ $character
 
 right_format = "$all"
 
-[directory.substitutions]
-"Desktop" = " "
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Public" = "󰒗 "
-"Templates" = "󰷈 "
-"Videos" = "󰕧 "
-"Projects" = "󰲋 "
-
-# TODO: Bottom half is merged nerd font and bracket presets. Top half is custom, yet to setup better username@hostname and prettier formatting
+# Bottom half is merged nerd font and bracket presets except `hostname.format` appends `ssh_symbol`
+# instead of prepending it. Top half is custom.
 
 [aws]
 format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]"
@@ -194,7 +182,7 @@ format = "\\[[$symbol$branch]($style)\\]"
 symbol = " "
 
 [hostname]
-format = "\\[[$ssh_symbol($hostname)]($style)\\] "
+format = "\\[[($hostname) $ssh_symbol]($style)\\]"
 ssh_symbol = " "
 
 [java]
