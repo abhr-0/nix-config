@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -55,7 +56,7 @@
       nerd-fonts.jetbrains-mono # Used by VSCode
     ];
 
-    sessionVariables.EDITOR = "nvim";
+    sessionVariables.EDITOR = lib.getExe pkgs.localPkgs.neovim;
     # shellAliases.vimdiff = "nvim -d";
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
