@@ -22,6 +22,7 @@
         inherit (unstablePkgs) lazygit;
         inherit (unstablePkgs) yazi;
         inherit (unstablePkgs) vscode;
+        inherit (unstablePkgs) opencode;
 
         localPkgs = config.packages;
       };

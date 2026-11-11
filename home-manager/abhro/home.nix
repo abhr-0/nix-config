@@ -85,6 +85,8 @@
         maximize = true;
       };
     };
+
+    opencode.enable = true;
   };
 
   # WARN: Keep this to load fonts when if no fonts seem to be added in config
