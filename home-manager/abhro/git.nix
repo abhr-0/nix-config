@@ -1,9 +1,26 @@
 { pkgs, config, ... }:
 {
   programs = {
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+        telemetry = "disabled";
+        aliases = {
+          co = "pr checkout";
+          pv = "pr view";
+          pc = "pr create";
+          pl = "pr list";
+          iv = "issue view";
+          il = "issue list";
+        };
+      };
+    };
+
+    gh-dash.enable = true; # NOTE: Empty settings, results in default config
+
     lazygit = {
       enable = true;
-
       settings = {
         git.diffRenderers = [
           { command = "delta --{{colorScheme}} --paging=never"; }
@@ -12,6 +29,18 @@
             command = "difft --color=always --background={{colorScheme}} --context={{diffContext}}";
           }
         ];
+        customCommands = [
+          {
+            key = "P";
+            command = "git push {{.SelectedRemote.Name}} {{.SelectedCommit.Sha}}:{{.SelectedLocalBranch.Name}}";
+            description = "Push a specific commit (and any preceding)";
+            context = "commits";
+            loadingText = "Pushing commit...";
+            output = "log";
+          }
+          # https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#list-and-select-github-pr-for-checkout
+          # https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#opening-git-mergetool
+        ];
       };
     };
 
@@ -19,7 +48,7 @@
       enable = true;
       enableGitIntegration = true;
       options = {
-        line-number = true;
+        line-numbers = true;
         side-by-side = true; # Can get annoying
         syntax-theme = config.programs.bat.config.theme;
       };
@@ -45,6 +74,7 @@
     git = {
       enable = true;
       lfs.enable = true;
+      # NOTE: gpg.ssh.allowedSignersFile is intentionally NOT set.
       signing = {
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB1Wf+uEOWkpzbspHnKyoGRbtlTQR++A8o4iM2IiWnv/ 121384410+abhr-0@users.noreply.github.com";
         format = "ssh";
