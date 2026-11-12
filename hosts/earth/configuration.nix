@@ -1,6 +1,9 @@
 {
   # Import your generated (nixos-generate-config) hardware configuration
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./workarounds.nix
+  ];
 
   services.btrfs.autoScrub = {
     enable = true;
@@ -28,9 +31,11 @@
   # Prevents flickering when booting, but makes the initrd bloated too
   hardware.amdgpu.initrd.enable = true;
 
+  # WARN: DO NOT REMOVE, need to enable systemd in initrd to detect swapfile
+  boot.initrd.systemd.enable = true;
   swapDevices = [
     {
-      device = "/swap/swapfile";
+      device = "/swap/swapfile"; # NOTE: Default swap priority is less than zram
       size = 24 * 1024; # 24GiB
     }
   ];
