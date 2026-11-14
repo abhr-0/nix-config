@@ -3,10 +3,13 @@
   lib,
   ...
 }:
+let
+  cfg = config.systemSettings.homeWifi;
+in
 {
   options.systemSettings.homeWifi.enable = lib.mkEnableOption "Enable Home Wi-Fi configuration";
 
-  config = lib.mkIf config.systemSettings.homeWifi.enable {
+  config = lib.mkIf cfg.enable {
     sops = {
       secrets = {
         home_wifi_password.sopsFile = ../../secrets/host.yaml;

@@ -4,11 +4,13 @@
   lib,
   ...
 }:
-
+let
+  cfg = config.systemSettings.virt-manager;
+in
 {
   options.systemSettings.virt-manager.enable = lib.mkEnableOption "Enable virt-manager for working with VMs";
 
-  config = lib.mkIf config.systemSettings.virt-manager.enable {
+  config = lib.mkIf cfg.enable {
     programs.virt-manager.enable = true;
 
     # Enable libvirtd (Needed by virt-manager)

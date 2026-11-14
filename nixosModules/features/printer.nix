@@ -4,10 +4,13 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.systemSettings.printer;
+in
 {
   options.systemSettings.printer.enable = lib.mkEnableOption "Enable printer and scanner support";
 
-  config = lib.mkIf config.systemSettings.printer.enable {
+  config = lib.mkIf cfg.enable {
     nixpkgs.config.allowUnfreePackages = [
       "hplip"
       "hplipWithPlugin"

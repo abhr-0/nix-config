@@ -4,11 +4,13 @@
   lib,
   ...
 }:
-
+let
+  cfg = config.systemSettings.podman;
+in
 {
   options.systemSettings.podman.enable = lib.mkEnableOption "Enable Podman for container management";
 
-  config = lib.mkIf config.systemSettings.podman.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ podman-compose ]; # KEEP: `podman compose` uses this
 
     virtualisation = {

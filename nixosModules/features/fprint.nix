@@ -4,10 +4,13 @@
   pkgs,
   ...
 }:
+let
+  cfg = config.systemSettings.fprint;
+in
 {
   options.systemSettings.fprint.enable = lib.mkEnableOption "Enable fingerprint reader support";
 
-  config = lib.mkIf config.systemSettings.fprint.enable {
+  config = lib.mkIf cfg.enable {
     nixpkgs.config.allowUnfreePackages = [ "libfprint-2-tod1-elan" ];
 
     services.fprintd = {

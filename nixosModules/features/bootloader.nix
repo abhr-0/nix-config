@@ -5,6 +5,9 @@
   inputs,
   ...
 }:
+let
+  cfg = config.systemSettings;
+in
 {
   imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
@@ -18,7 +21,7 @@
   };
 
   config = lib.mkMerge [
-    (lib.mkIf (config.systemSettings.bootloader == "grub") {
+    (lib.mkIf (cfg.bootloader == "grub") {
       boot.loader = {
         efi = {
           # Using /boot/efi is the mount point as this is a dual-boot system and
@@ -46,7 +49,7 @@
         };
       };
     })
-    (lib.mkIf (config.systemSettings.bootloader == "lanzaboote") {
+    (lib.mkIf (cfg.bootloader == "lanzaboote") {
       environment.systemPackages = with pkgs; [
         tpm-tools # For TPM
         sbctl # For secureboot

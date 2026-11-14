@@ -1,9 +1,12 @@
 { config, lib, ... }:
+let
+  cfg = config.systemSettings.firewalld;
+in
 {
   options.systemSettings.firewalld.enable = lib.mkEnableOption "Enable firewalld for firewall management";
 
   # https://wiki.nixos.org/wiki/Firewall#Firewalld
-  config = lib.mkIf config.systemSettings.firewalld.enable {
+  config = lib.mkIf cfg.enable {
     # environment.systemPackages = [ pkgs.firewalld-gui ];
 
     networking.nftables.enable = true; # Used by firewalld

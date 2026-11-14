@@ -1,7 +1,11 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+let
+  cfg = config.systemSettings.openssh;
+in
+{
   options.systemSettings.openssh.enable = lib.mkEnableOption "Enable OpenSSH for remote access";
 
-  config = lib.mkIf config.systemSettings.openssh.enable {
+  config = lib.mkIf cfg.enable {
     services.openssh = {
       enable = true;
       # openFirewall = true; # NOTE: Set in ../features/firewalld.nix

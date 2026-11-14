@@ -1,8 +1,11 @@
 { config, lib, ... }:
+let
+  cfg = config.systemSettings.plymouth;
+in
 {
   options.systemSettings.plymouth.enable = lib.mkEnableOption "Enable Plymouth for splash screen during boot";
 
-  config = lib.mkIf config.systemSettings.plymouth.enable {
+  config = lib.mkIf cfg.enable {
     boot = {
       plymouth.enable = true;
 
