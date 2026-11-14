@@ -8,9 +8,11 @@
 
   environment = {
     gnome.excludePackages = with pkgs; [
-      yelp
-      gnome-tour
       epiphany
+      gnome-tour
+      gnome-user-docs
+      orca
+      yelp
     ];
     systemPackages = [
       pkgs.nautilus-python # WARN: Needed for integration with gsconnect and ghostty
@@ -31,4 +33,5 @@
     sessionVariables."GST_PLUGIN_PATH" = "/run/current-system/sw/lib/gstreamer-1.0/";
   };
 
+  services.speechd.enable = false; # pulls in mbrola-voices which is 600+ MiB
 }
