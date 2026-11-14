@@ -13,6 +13,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    systemSettings.secrets.enable = true;
+
     sops.secrets.usbguard_rules_file.sopsFile = cfg.sopsFile;
 
     services.usbguard = {

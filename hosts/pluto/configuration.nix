@@ -11,6 +11,7 @@
     plymouth.enable = true;
     podman.enable = false;
     printer.enable = true;
+    secrets.enable = true;
     usbguard.enable = true;
     virt-manager.enable = false;
   };

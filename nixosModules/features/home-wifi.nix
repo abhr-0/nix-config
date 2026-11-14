@@ -10,6 +10,8 @@ in
   options.systemSettings.homeWifi.enable = lib.mkEnableOption "Enable Home Wi-Fi configuration";
 
   config = lib.mkIf cfg.enable {
+    systemSettings.secrets.enable = true;
+
     sops = {
       secrets = {
         home_wifi_password.sopsFile = ../../secrets/host.yaml;
