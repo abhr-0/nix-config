@@ -15,7 +15,6 @@
             (inputs.import-tree ../nixosModules)
             {
               nixpkgs.overlays = [ inputs.self.overlays.default ];
-              sops.secrets.usbguard_rules_file.sopsFile = ../secrets/${hostName}.yaml;
               networking = { inherit hostName; };
             }
           ];
