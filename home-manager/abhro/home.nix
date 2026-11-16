@@ -9,9 +9,6 @@
   imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
   home = {
-    username = "abhro";
-    homeDirectory = "/home/abhro";
-
     # GUI Applications
     packages = with pkgs; [
       # Privacy & Security
