@@ -17,11 +17,8 @@
 
     formatters.prettierd = {
       command = lib.getExe pkgs.prettierd;
-      # Match the 100-column default set in nixvim/default.nix
-      append_args = [
-        "--print-width"
-        "100"
-      ];
+      # Match the 100-column default set in nixvim/default.nix.
+      append_args = [ "--print-width=100" ];
     };
   };
 }
