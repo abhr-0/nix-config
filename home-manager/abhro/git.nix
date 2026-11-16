@@ -76,14 +76,14 @@
       lfs.enable = true;
       # NOTE: gpg.ssh.allowedSignersFile is intentionally NOT set.
       signing = {
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB1Wf+uEOWkpzbspHnKyoGRbtlTQR++A8o4iM2IiWnv/ 121384410+abhr-0@users.noreply.github.com";
+        key = "${config.home.homeDirectory}/.ssh/id_ed25519_sign.pub";
         format = "ssh";
         signByDefault = true;
       };
       settings = {
         # Commit Author
         user = {
-          name = "Abhraneel Mukherjee";
+          name = "Abhraneel Mukherjee"; # NOTE: Duplication, can be read from host config
           email = "121384410+abhr-0@users.noreply.github.com";
         };
 
