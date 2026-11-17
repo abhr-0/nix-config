@@ -1,4 +1,6 @@
 {
+  nixpkgs.config.allowUnfreePackages = [ "copilot-language-server" ];
+
   plugins.copilot-lua = {
     enable = true;
     settings = {

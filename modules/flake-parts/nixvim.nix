@@ -1,14 +1,15 @@
 { inputs, ... }:
 {
   perSystem =
-    { config, system, ... }:
+    { system, ... }:
     let
-      nixvim-overlay = _final: prev: {
-        vimPlugins = prev.vimPlugins.extend (
-          # final' and prev'
-          _: _: { inherit (config.packages) blink-cmp-copilot-chat; } # Not in nixpkgs
-        );
-      };
+      # nixvim-overlay = _final: prev: {
+      #   vimPlugins = prev.vimPlugins.extend (
+      #     final': prev': {
+      #       inherit (config.packages) blink-cmp-copilot-chat;
+      #     }
+      #   );
+      # };
       configuration = inputs.nixvim.lib.evalNixvim {
         inherit system;
         modules = [
@@ -16,8 +17,7 @@
           {
             nixpkgs = {
               source = inputs.nixpkgs-unstable; # WARN: Can cause issues, try disabling if nixvim fails to build (Also set in flake.nix)
-              overlays = [ nixvim-overlay ];
-              config.allowUnfreePackages = [ "copilot-language-server" ]; # FIXME: nixvim
+              # overlays = [ nixvim-overlay ];
             };
           }
         ];
