@@ -12,7 +12,7 @@
       configuration = inputs.nixvim.lib.evalNixvim {
         inherit system;
         modules = [
-          (inputs.import-tree ../nixvim)
+          (inputs.import-tree ../modules/nixvim)
           {
             nixpkgs = {
               source = inputs.nixpkgs-unstable; # WARN: Can cause issues, try disabling if nixvim fails to build (Also set in flake.nix)

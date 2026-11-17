@@ -10,6 +10,6 @@
       # inputs.sops-nix.homeManagerModules.sops
     ];
     extraSpecialArgs = { inherit inputs; };
-    users.abhro = inputs.import-tree ../../home-manager/abhro;
+    users.abhro = inputs.import-tree ../../home-manager;
   };
 }

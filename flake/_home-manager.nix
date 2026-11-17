@@ -15,7 +15,7 @@
       extraSpecialArgs = { inherit inputs; };
       # > Our main home-manager configuration file <
       modules = [
-        ../home-manager/abhro/home.nix
+        ../modules/home-manager/home.nix
         # Only needed for standalone HM; the NixOS and nix-darwin modules
         # derive these from users.users.<name>.
         {

@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   ...
 }:
@@ -14,7 +15,7 @@ in
 
     sops = {
       secrets = {
-        home_wifi_password.sopsFile = ../../secrets/host.yaml;
+        home_wifi_password.sopsFile = inputs.self + "/secrets/host.yaml";
       };
       templates = {
         "network_manager.env".content = ''

@@ -26,7 +26,7 @@ in
     }
     (lib.mkIf cfg.enable {
       sops = {
-        defaultSopsFile = ../../secrets/host.yaml;
+        defaultSopsFile = inputs.self + "/secrets/host.yaml";
         defaultSopsFormat = "yaml";
 
         # Disable automatic importing of SSH host keys

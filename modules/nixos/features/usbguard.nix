@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 let
   cfg = config.systemSettings.usbguard;
 in
@@ -7,7 +12,7 @@ in
     enable = lib.mkEnableOption "Enable USBGuard service";
     sopsFile = lib.mkOption {
       type = lib.types.path;
-      default = ../../secrets/${config.networking.hostName}.yaml;
+      default = inputs.self + "/secrets/${config.networking.hostName}.yaml";
       description = "sops file containing the usbguard_rules_file secret";
     };
   };

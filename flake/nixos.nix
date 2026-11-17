@@ -12,7 +12,7 @@
           # > Our main nixos configuration file <
           modules = [
             ../hosts/${hostName}/configuration.nix
-            (inputs.import-tree ../nixosModules)
+            (inputs.import-tree ../modules/nixos)
             {
               nixpkgs.overlays = [ inputs.self.overlays.default ];
               networking = { inherit hostName; };
