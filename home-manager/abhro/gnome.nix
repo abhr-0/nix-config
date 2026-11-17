@@ -67,12 +67,6 @@
         # allow USB devices use: `sudo usbguard set-parameter ImplicitPolicyTarget allow`
         usb-protection-level = "lockscreen";
       };
-
-      # Wallpaper
-      # "org/gnome/desktop/background" = rec {
-      #   picture-uri = "file://${./home-manager/${config.home.username}/wallpaper.png}";
-      #   picture-uri-dark = picture-uri;
-      # };
     };
   };
 }
