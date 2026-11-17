@@ -13,18 +13,16 @@
 
   home-manager.users.abhro.programs.vscode.enable = true;
 
+  # Feature defaults live in the modules (`features/*`); only enable what
+  # differs from the default here. `bootloader` is required by design.
   systemSettings = {
     bootloader = "lanzaboote";
     firewalld.enable = true;
     fprint.enable = true;
     homeWifi.enable = true;
-    openssh.enable = false;
     plymouth.enable = true;
     podman.enable = true;
-    printer.enable = false;
-    secrets.enable = true;
     usbguard.enable = true;
-    virt-manager.enable = false;
   };
 
   time.timeZone = "Asia/Kolkata";

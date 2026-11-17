@@ -2,18 +2,13 @@
   # Import your generated (nixos-generate-config) hardware configuration
   imports = [ ./hardware-configuration.nix ];
 
+  # Feature defaults live in the modules (`features/*`); only enable what
+  # differs from the default here. `bootloader` is required by design.
   systemSettings = {
     bootloader = "grub";
-    firewalld.enable = false;
-    fprint.enable = false;
-    homeWifi.enable = false;
-    openssh.enable = false;
     plymouth.enable = true;
-    podman.enable = false;
     printer.enable = true;
-    secrets.enable = true;
     usbguard.enable = true;
-    virt-manager.enable = false;
   };
 
   time.timeZone = "Asia/Kolkata";

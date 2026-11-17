@@ -11,9 +11,10 @@ in
 {
   config = lib.mkMerge [
     {
-      # Sops provides the password hash by default. A host may disable it and
-      # provide one of the other password options instead; the assertion below
-      # ensures a password source is always configured.
+      # abhro's password comes from sops, so this user requires the secrets
+      # module. A host that supplies a password another way (e.g. `password`,
+      # as the VM variant does) can still override this to false; the assertion
+      # below ensures a password source is always configured.
       systemSettings.secrets.enable = lib.mkDefault true;
 
       # Enable zsh as it is required by users.user.<user>.shell = zsh;
