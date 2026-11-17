@@ -29,7 +29,7 @@
 
       packages = lib.packagesFromDirectoryRecursive {
         inherit (pkgs) callPackage;
-        directory = ../pkgs;
+        directory = ../../pkgs;
       };
     };
 }

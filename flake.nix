@@ -40,10 +40,12 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable"; # WARN: Can cause issues, try disabling if nixvim fails to build (Also set in flake/nixvim.nix)
+      inputs.nixpkgs.follows = "nixpkgs-unstable"; # WARN: Can cause issues, try disabling if nixvim fails to build (Also set in modules/flake-parts/nixvim.nix)
       inputs.flake-parts.follows = "flake-parts";
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./flake);
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules/flake-parts);
 }

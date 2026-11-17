@@ -2,7 +2,7 @@
 {
   flake =
     let
-      hosts = builtins.attrNames (builtins.readDir ../hosts);
+      hosts = builtins.attrNames (builtins.readDir ../../hosts);
       genNixosConfigurations =
         configurationList: lib.genAttrs configurationList (name: mkNixOS { hostName = name; });
       mkNixOS =
@@ -11,8 +11,8 @@
           specialArgs = { inherit inputs; };
           # > Our main nixos configuration file <
           modules = [
-            ../hosts/${hostName}/configuration.nix
-            (inputs.import-tree ../modules/nixos)
+            ../../hosts/${hostName}/configuration.nix
+            (inputs.import-tree ../nixos)
             {
               nixpkgs.overlays = [ inputs.self.overlays.default ];
               networking = { inherit hostName; };
