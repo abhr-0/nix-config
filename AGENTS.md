@@ -33,6 +33,9 @@ config; rebuild the host instead.
 - `modules/nixos/**` is auto-imported into every host. `common/` is unconditional;
   `features/*.nix` expose `systemSettings.<name>.enable` (or `.bootloader`) that each
   host toggles in `hosts/<host>/configuration.nix`.
+- `modules/nixos/users/*.nix` holds per-user configuration: the account, its password
+  source, the Home Manager attach point (`home-manager.users.<name>`), and the
+  AccountsService avatar service, which is gated on `services.displayManager.enable`.
 - Hosts list only what differs from the default: `mkEnableOption` defaults to `false`,
   `secrets` is defaulted on by the user module (abhro's password comes from sops), and
   `bootloader` has no default so every host must choose one. Print the effective set
