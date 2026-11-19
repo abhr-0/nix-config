@@ -15,7 +15,6 @@
       authenticator # TOTP provider
       bitwarden-desktop # Bitwarden Desktop Client
       proton-vpn # VPN
-      # torbrowser-launcher
       vaults # Encrypted vaults
 
       # Multimedia
@@ -47,8 +46,6 @@
       localPkgs.neovim # Neovim with custom config
       nixd # Nix LSP Server
       nixfmt # Nix Formatter
-      # vulnix
-      # distrobox
 
       nerd-fonts.jetbrains-mono # Used by VSCode
     ];
