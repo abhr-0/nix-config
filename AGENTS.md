@@ -6,18 +6,18 @@ there is no central import list.
 
 ## Commands
 
-| Purpose | Command |
-| --- | --- |
-| CI gate (hosts + nixvim + pre-commit) | `nix flake check` |
-| Cheap eval of one host | `nix eval --raw .#nixosConfigurations.earth.config.system.build.toplevel.drvPath` |
-| List a host's effective feature flags | `nix eval .#nixosConfigurations.earth.config.systemSettings` |
-| Build host without switching | `nixos-rebuild build --flake .#earth` |
-| Apply host | `sudo nixos-rebuild switch --flake .#earth` (or `nh os switch`; `nh` is preconfigured to this repo) |
-| Build VM variant | `nixos-rebuild build-vm --flake .#earth` (or `nh os build-vm`) |
-| Run nixvim config | `nix run .#neovim` |
-| Check nixvim only | `nix build .#checks.x86_64-linux.neovim` |
-| Dev shell (sops, age, nix-init, nurl, nix-update, pre-commit) | `nix develop` (or `direnv allow`) |
-| Format / lint | `nix fmt`; `pre-commit run --all-files` |
+| Purpose                                                       | Command                                                                                             |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| CI gate (hosts + nixvim + pre-commit)                         | `nix flake check`                                                                                   |
+| Cheap eval of one host                                        | `nix eval --raw .#nixosConfigurations.earth.config.system.build.toplevel.drvPath`                   |
+| List a host's effective feature flags                         | `nix eval .#nixosConfigurations.earth.config.systemSettings`                                        |
+| Build host without switching                                  | `nixos-rebuild build --flake .#earth`                                                               |
+| Apply host                                                    | `sudo nixos-rebuild switch --flake .#earth` (or `nh os switch`; `nh` is preconfigured to this repo) |
+| Build VM variant                                              | `nixos-rebuild build-vm --flake .#earth` (or `nh os build-vm`)                                      |
+| Run nixvim config                                             | `nix run .#neovim`                                                                                  |
+| Check nixvim only                                             | `nix build .#checks.x86_64-linux.neovim`                                                            |
+| Dev shell (sops, age, nix-init, nurl, nix-update, pre-commit) | `nix develop` (or `direnv allow`)                                                                   |
+| Format / lint                                                 | `nix fmt`; `pre-commit run --all-files`                                                             |
 
 There is no separate test suite; `nix flake check` is the verification step.
 Home Manager is a NixOS module here, so `home-manager switch` does not apply this

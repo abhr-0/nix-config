@@ -1,9 +1,11 @@
 This document holds various things:
 
 # Language specific configuration
+
 Only `langs/` contains language/framework/filetype specific configs
 
 # Useful commands/keymaps:
+
 - increment: `<C-a>`
 - decrement: `<C-x>`
 - toggle case for single character: `~`
@@ -18,12 +20,14 @@ Only `langs/` contains language/framework/filetype specific configs
 - `]<Space>`, `[<Space>` adds line to prev or next line and remains in NORMAL mode
 
 ## In Visual Mode
+
 - expand selection: `an`
 - shrink selection: `in`
 - select next node: `]n`
 - select previous node : `[n`
 
 # Reference configs
+
 [Gaetan Lepage](https://github.com/GaetanLepage/nix-config/tree/master/modules/home/dev/_dev/programs/neovim)
 [dc-tec](https://github.com/dc-tec/nixvim)
 [Mikael Fangel](https://github.com/MikaelFangel/nixvim-config)
@@ -31,6 +35,7 @@ Only `langs/` contains language/framework/filetype specific configs
 [ribru17](https://github.com/ribru17/.dotfiles/blob/master/.config/nvim) for bindings, ezsemicolon, hover
 
 # More plugins
+
 - overseer / any code runner
 - lspsaga
 - molten
@@ -52,10 +57,12 @@ Only `langs/` contains language/framework/filetype specific configs
 - markdown-previewer
 - vimtex and texlab for latex
 - treesitter-context
-- treesitter-textobjects 
+- treesitter-textobjects
 
 # Future:
+
 ## Consider lazy-loading:
+
 - lazygit
 - dap
 - ai
@@ -63,7 +70,9 @@ Only `langs/` contains language/framework/filetype specific configs
 - snippets
 - db tooling?
 - lang specific plugins
+
 ## Other
+
 - file renaming with LSP support? (like oil and yazi)
 - snack.words
 - blink.cmp: completion.menu.draw.columns [Link](https://main.cmp.saghen.dev/configuration/completion#menu)
