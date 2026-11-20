@@ -9,6 +9,7 @@
     plymouth.enable = true;
     printer.enable = true;
     usbguard.enable = true;
+    openssh.enable = true;
   };
 
   time.timeZone = "Asia/Kolkata";

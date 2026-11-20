@@ -8,7 +8,7 @@ in
   config = lib.mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      # openFirewall = true; # NOTE: Set in ./firewalld.nix
+      openFirewall = true;
       startWhenNeeded = true; # WARN: Has issues. Link: https://wiki.archlinux.org/title/OpenSSH#Socket_activation
       settings = {
         AllowUsers = [ "abhro" ]; # Allows all users if not set
