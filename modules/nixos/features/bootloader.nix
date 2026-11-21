@@ -22,47 +22,29 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf (cfg.bootloader == "grub") {
-      boot.loader = {
-        efi = {
-          # Using /boot/efi is the mount point as this is a dual-boot system and
-          # the EFI partition is shared between Windows and NixOS
-          efiSysMountPoint = "/boot/efi";
+      boot.loader.grub = {
+        enable = true;
 
-          canTouchEfiVariables = true;
-        };
+        # Needed to pass an assert in nixpkgs's grub.nix
+        # This isn't used by the EFI grub install
+        device = "nodev";
 
-        grub = {
-          enable = true;
+        efiSupport = true;
+        useOSProber = true; # To detect Windows installation
+        default = 2; # To select Windows to be the default option
 
-          # Needed to pass an assert in nixpkgs's grub.nix
-          # This isn't used by the EFI grub install
-          device = "nodev";
-
-          efiSupport = true;
-          useOSProber = true; # To detect Windows installation
-          default = 2; # To select Windows to be the default option
-
-          # Hide the OS choice for bootloaders.
-          # It's still possible to open the bootloader list by holding the
-          # "Shift" key during boot
-          timeoutStyle = "hidden";
-        };
+        # Hide the OS choice for bootloaders.
+        # It's still possible to open the bootloader list by holding the
+        # "Shift" key during boot
+        timeoutStyle = "hidden";
       };
     })
     (lib.mkIf (cfg.bootloader == "lanzaboote") {
       environment.systemPackages = [ pkgs.sbctl ]; # For secureboot
 
+      # Bootloader configuration
       boot = {
-        # Bootloader configuration
         loader = {
-          efi = {
-            # assuming /boot is the mount point of the  EFI partition in NixOS
-            # (as the installation section recommends).
-            efiSysMountPoint = "/boot"; # Default
-
-            canTouchEfiVariables = true;
-          };
-
           systemd-boot = {
             enable = lib.mkForce false;
 
@@ -73,8 +55,7 @@ in
           };
 
           # Hide the OS choice for bootloaders.
-          # It's still possible to open the bootloader list by holding "Esc"
-          # or "Space" key
+          # It's still possible to open the bootloader list by holding "Esc" or "Space" key
           timeout = 0;
         };
 
@@ -85,8 +66,7 @@ in
           autoGenerateKeys.enable = true;
           autoEnrollKeys = {
             enable = true;
-            # Automatically reboot to enroll the keys in the firmware
-            autoReboot = true;
+            autoReboot = true; # Automatically reboot to enroll the keys in the firmware
           };
 
           # NOTE: Max config limit is 4 for measured boot

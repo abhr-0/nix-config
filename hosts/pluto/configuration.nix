@@ -18,6 +18,13 @@
   # Prevents flickering when booting, but makes the initrd bloated too
   hardware.amdgpu.initrd.enable = true;
 
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    # Using /boot/efi is the mount point as this is a dual-boot system and the EFI partition is
+    # shared between Windows and NixOS
+    efiSysMountPoint = "/boot/efi";
+  };
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }
