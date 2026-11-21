@@ -15,9 +15,18 @@ in
     type = lib.types.enum [
       "grub"
       "lanzaboote"
-      "none"
+      "unmanaged"
     ];
-    description = "Bootloader configuration"; # default not set to force explicit choice
+    description = ''
+      Bootloader configuration for this host. No default is set, so every host has
+      to choose one explicitly.
+
+      - `grub`: GRUB, installed for EFI. Kernel parameters can be edited at boot.
+      - `lanzaboote`: signed EFI binaries with secure boot and measured boot.
+      - `unmanaged`: this module configures no bootloader, so the nixpkgs defaults
+        apply and GRUB remains enabled to avoid a host with no bootloader. Used by
+        the VM variant and by hosts that manage their own bootloader.
+    '';
   };
 
   config = lib.mkMerge [

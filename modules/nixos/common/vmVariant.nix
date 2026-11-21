@@ -58,7 +58,7 @@ in
       // {
         # lanzaboote in a VM drags in secure-boot/TPM services, including one
         # that reboots on success, so no host bootloader is configured here.
-        bootloader = mkVMOverride "none";
+        bootloader = mkVMOverride "unmanaged";
       };
   };
 }
