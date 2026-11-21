@@ -19,6 +19,7 @@
     bootloader = "lanzaboote";
     firewalld.enable = true;
     fprint.enable = true;
+    home-manager.enable = true;
     homeWifi.enable = true;
     plymouth.enable = true;
     podman.enable = true;

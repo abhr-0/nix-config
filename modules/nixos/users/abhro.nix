@@ -20,12 +20,6 @@ in
       # Enable zsh as it is required by users.user.<user>.shell = zsh;
       programs.zsh.enable = true;
 
-      # abhro's home tree. HM is used as a NixOS module, so the attach point
-      # lives with the user rather than in common/home-manager.nix.
-      # NOTE: assumes that module is imported, since `home-manager.users` only
-      # exists once it is. It is, unconditionally, from common/home-manager.nix.
-      home-manager.users.abhro = inputs.import-tree ../../home-manager;
-
       users.users = {
         abhro = {
           isNormalUser = true;
@@ -81,6 +75,12 @@ in
           }
         ];
     }
+    # abhro's home tree. HM is used as a NixOS module, so the attach point lives
+    # with the user rather than in features/home-manager.nix. That module is
+    # always imported, so `home-manager.users` exists even when this is off.
+    (lib.mkIf cfg.home-manager.enable {
+      home-manager.users.abhro = inputs.import-tree ../../home-manager;
+    })
     (lib.mkIf cfg.secrets.enable {
       # This is required to be able to use the `path` attribute of secrets in users.user.<user>.hashedPasswordFile
       sops.secrets.abhro-password.neededForUsers = true;

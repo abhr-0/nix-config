@@ -3,6 +3,14 @@
   flake =
     let
       hosts = builtins.attrNames (builtins.readDir ../../hosts);
+
+      # A hosts/ entry with configuration.nix is a NixOS host. It may also carry
+      # home.nix (the machine's standalone HM entrypoint, see _home-manager.nix);
+      # the two outputs are independent.
+      nixosHosts = builtins.filter (
+        hostName: builtins.pathExists ../../hosts/${hostName}/configuration.nix
+      ) hosts;
+
       genNixosConfigurations =
         configurationList: lib.genAttrs configurationList (name: mkNixOS { hostName = name; });
       mkNixOS =
@@ -21,7 +29,7 @@
         };
     in
     {
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = genNixosConfigurations hosts;
+      # Available through 'nixos-rebuild --flake .#<hostName>'
+      nixosConfigurations = genNixosConfigurations nixosHosts;
     };
 }

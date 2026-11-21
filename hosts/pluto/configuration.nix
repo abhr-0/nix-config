@@ -6,6 +6,7 @@
   # differs from the default here. `bootloader` is required by design.
   systemSettings = {
     bootloader = "grub";
+    home-manager.enable = true;
     plymouth.enable = true;
     printer.enable = true;
     usbguard.enable = true;

@@ -14,12 +14,16 @@ This configuration is currently used by the following hosts:
 | `earth`  | 💻 Laptop  | Primary Device                |
 | `pluto`  | 🖥 Desktop | Old system, used occasionally |
 
+A host directory holds a `configuration.nix` (NixOS), a `home.nix` (standalone Home
+Manager, published as `homeConfigurations."abhro@<hostName>"`), or both when Home Manager
+runs standalone on a NixOS host.
+
 # Directory structure
 
 | Directory/File Name        | Use                                 |
 | -------------------------- | ----------------------------------- |
 | `./flake.{nix,lock}`       | Flake inputs and lockfile           |
-| `./hosts/*`                | NixOS config specific to each host  |
+| `./hosts/*`                | Per-host config: NixOS and/or standalone HM |
 | `./modules/flake-parts/*`  | Flake outputs (flake-parts modules) |
 | `./modules/nixos/*`        | NixOS modules                       |
 | `./modules/home-manager/*` | Home Manager modules                |
