@@ -12,11 +12,13 @@
       # NOTE: Look into ./nixvim.nix as nixvim likes to manage its own pkgs.
 
       # https://wiki.nixos.org/wiki/Overlays
+      # NOTE: easyOverlay re-evaluates perSystem with `pkgs` bound to the
+      # consuming instance (prev), so inheriting its config here makes a host's
+      # nixpkgs.config (e.g. allowUnfreePackages) apply to unstablePkgs too.
       overlayAttrs = rec {
         unstablePkgs = import inputs.nixpkgs-unstable {
           inherit system;
-          # TODO: Find solution as I cannot customize nixpkgs in home-manager as: `useGlobalPackages = true`
-          config.allowUnfreePackages = [ "vscode" ];
+          inherit (pkgs) config;
         };
 
         inherit (unstablePkgs) lazygit;

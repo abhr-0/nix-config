@@ -5,6 +5,10 @@
     ./workarounds.nix
   ];
 
+  # vscode is unfree (and only used here). The overlay forwards this nixpkgs
+  # config to unstablePkgs, so pkgs.vscode resolves to the unstable build.
+  nixpkgs.config.allowUnfreePackages = [ "vscode" ];
+
   services.btrfs.autoScrub = {
     enable = true;
     interval = "monthly";
