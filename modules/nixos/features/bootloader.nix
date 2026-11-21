@@ -50,18 +50,9 @@ in
       };
     })
     (lib.mkIf (cfg.bootloader == "lanzaboote") {
-      environment.systemPackages = with pkgs; [
-        tpm-tools # For TPM
-        sbctl # For secureboot
-      ];
+      environment.systemPackages = [ pkgs.sbctl ]; # For secureboot
 
       boot = {
-        # Enable TPM support
-        initrd = {
-          systemd.enable = true;
-          systemd.tpm2.enable = true;
-        };
-
         # Bootloader configuration
         loader = {
           efi = {
