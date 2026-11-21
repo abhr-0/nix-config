@@ -33,18 +33,14 @@ in
     (lib.mkIf (cfg.bootloader == "grub") {
       boot.loader.grub = {
         enable = true;
+        efiSupport = true;
 
         # Needed to pass an assert in nixpkgs's grub.nix
         # This isn't used by the EFI grub install
         device = "nodev";
 
-        efiSupport = true;
-        useOSProber = true; # To detect Windows installation
-        default = 2; # To select Windows to be the default option
-
         # Hide the OS choice for bootloaders.
-        # It's still possible to open the bootloader list by holding the
-        # "Shift" key during boot
+        # It's still possible to open the bootloader list by holding the "Shift" key during boot
         timeoutStyle = "hidden";
       };
     })
