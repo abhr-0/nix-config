@@ -78,6 +78,7 @@
       settings = {
         theme = "Kanagawa Wave";
         maximize = true;
+        shell-integration-features = "ssh-env,ssh-terminfo";
       };
     };
 
