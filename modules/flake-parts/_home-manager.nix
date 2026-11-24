@@ -43,6 +43,7 @@
                 inherit username;
                 homeDirectory = "/home/${username}";
               };
+              programs.home-manager.enable = true;
             }
           ];
         };
